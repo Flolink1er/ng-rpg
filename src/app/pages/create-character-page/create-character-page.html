@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="title-contrast">⚔️ Création du personnage</h2>
+  <div class="input-ctrl">
+    <p class="subtitle-left">Nom du prénom</p>
+    <input type="text" placeholder="Entrez le nom de votre héro...">
+  </div>
+  <h3>Choix de la classe</h3>
+  <div class="select-class">
+    @for (item of data; track item.description) {
+      <div class="card">
+        <p>{{item.name}}</p>
+        <p>{{item.description}}</p>
+        @for (feature of item.features; track $index) {
+          <p class="pill">{{feature}}</p>
+        }
+      </div>
+    }
+  </div>
+  <div class="landing-button" routerLink="/create-character">🚀 Commencer l'aventure !</div>
+</div>

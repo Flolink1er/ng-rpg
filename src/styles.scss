@@ -1,1 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
+// ─── Couleurs (HEX) ───────────────────────────────────────────────────────────
+$charcoal-blue: #313e50;
+$twilight-indigo: #3a435e;
+$charcoal-blue-2: #455561;
+$blue-slate: #5c6672;
+$slate-grey: #6c6f7f;
+$contrast-warning: #f4af26;
+
+// ─── Dégradés ─────────────────────────────────────────────────────────────────
+$_stops: $charcoal-blue, $twilight-indigo, $charcoal-blue-2, $blue-slate, $slate-grey;
+
+$gradient-top: linear-gradient(0deg, $_stops);
+$gradient-right: linear-gradient(90deg, $_stops);
+$gradient-bottom: linear-gradient(180deg, $_stops);
+$gradient-left: linear-gradient(270deg, $_stops);
+$gradient-top-right: linear-gradient(45deg, $_stops);
+$gradient-bottom-right: linear-gradient(135deg, $_stops);
+$gradient-top-left: linear-gradient(225deg, $_stops);
+$gradient-bottom-left: linear-gradient(315deg, $_stops);
+$gradient-radial: radial-gradient($_stops);
+
+html,
+body {
+  background: radial-gradient($charcoal-blue, #000000);
+  color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', Helvetica, sans-serif;
+}
+
+h1.title-contrast {
+  color: $contrast-warning;
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 0.25rem;
+}
+
+h2.title-contrast {
+  color: $contrast-warning;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+p.subtitle {
+  color: $blue-slate;
+  text-align: center;
+}
+p.subtitle-left {
+  color: $blue-slate;
+  text-align: left;
+}
+
+.landing-button {
+  width: 100%;
+  font-size: 28px;
+  padding: 12px;
+  color: white;
+  border-radius: 6px;
+  background-color: $twilight-indigo;
+  text-align: center;
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  background: rgba($color: #ffffff, $alpha: 0.05);
+  border: 1px solid $slate-grey;
+  border-radius: 4px;
+  color: $slate-grey;
+}
+
+div.card {
+  padding: 6px;
+  height: 300px;
+  background: rgba($color: #ffffff, $alpha: 0.05);
+  border: 1px solid $slate-grey;
+  border-radius: 4px;
+  min-width: 30%;
+  margin: 6px;
+}
+
+p.pill {
+  color: $contrast-warning;
+  text-align: center;
+  padding: 2px;
+  border-radius: 14px;
+  background-color: rgba($color: $contrast-warning, $alpha: .10);
+}

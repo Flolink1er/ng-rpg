@@ -1,0 +1,41 @@
+div.container {
+  padding: 2rem;
+  max-width: 65vw;
+  max-height: 150px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  img {
+    max-width: 25vw;
+    max-height: 150px;
+    margin: auto;
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+.features-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem;
+  .feature-item {
+    background-color: rgba($color: #ffffff, $alpha: 0.05);
+    padding: 8px;
+    margin: 2px;
+    display: block;
+    border-radius: 15px;
+    width: 40%;
+    text-align: center;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
