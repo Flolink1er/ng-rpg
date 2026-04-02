@@ -1,91 +1,236 @@
-/* You can add global styles to this file, and also import other style files */
-// ─── Couleurs (HEX) ───────────────────────────────────────────────────────────
-$charcoal-blue: #313e50;
-$twilight-indigo: #3a435e;
-$charcoal-blue-2: #455561;
-$blue-slate: #5c6672;
-$slate-grey: #6c6f7f;
-$contrast-warning: #f4af26;
+:root {
+  --primary: #00E5FF;
+  --secondary: #7C3AED;
+}
 
-// ─── Dégradés ─────────────────────────────────────────────────────────────────
-$_stops: $charcoal-blue, $twilight-indigo, $charcoal-blue-2, $blue-slate, $slate-grey;
+/* ─── Couleurs (Obsidian Arcane) ───────────────────────────────────────────── */
+
+// Background principal (très sombre, bleu nuit)
+$obsidian-deep: #0B0F1A;
+
+// Surfaces (cartes, panels)
+$obsidian-surface: #111827;
+$obsidian-surface-2: #1F2937;
+
+// Accent magique (cyan lumineux)
+$arcane-cyan: #00E5FF;
+
+// Accent secondaire (violet mystique)
+$arcane-violet: #7C3AED;
+
+// Texte / neutres
+$arcane-text: #E2E8F0;
+$arcane-muted: #94A3B8;
+
+// Accent warning (tu peux garder ou adapter)
+$contrast-warning: #22D3EE;
+
+
+/* ─── Dégradés (style magique) ─────────────────────────────────────────────── */
+
+// Dégradé principal (fond)
+$_stops: $obsidian-deep, #0F172A, #111827, #1F2937;
+
+// Dégradé magique (accent UI)
+$_arcane-glow: $arcane-cyan, $arcane-violet;
 
 $gradient-top: linear-gradient(0deg, $_stops);
 $gradient-right: linear-gradient(90deg, $_stops);
 $gradient-bottom: linear-gradient(180deg, $_stops);
 $gradient-left: linear-gradient(270deg, $_stops);
+
+// Dégradés stylisés
 $gradient-top-right: linear-gradient(45deg, $_stops);
 $gradient-bottom-right: linear-gradient(135deg, $_stops);
 $gradient-top-left: linear-gradient(225deg, $_stops);
 $gradient-bottom-left: linear-gradient(315deg, $_stops);
-$gradient-radial: radial-gradient($_stops);
+
+// Glow magique (très utile pour boutons / hover)
+$gradient-arcane: linear-gradient(135deg, $_arcane-glow);
+
+// Radial (fond ambiance)
+$gradient-radial: radial-gradient(circle at center, #111827, #020617);
 
 html,
 body {
-  background: radial-gradient($charcoal-blue, #000000);
-  color: white;
+  background: radial-gradient(circle at center, #111827, #020617);
+  color: $arcane-text;
   width: 100%;
   height: 100%;
   margin: 0;
   font-family: 'Roboto', Helvetica, sans-serif;
 }
 
+#magic-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+/* ─── TITRES ───────────────────────────────────────── */
+
 h1.title-contrast {
-  color: $contrast-warning;
+  color: $arcane-cyan;
   text-align: center;
   font-size: 36px;
   margin-bottom: 0.25rem;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
 }
 
 h2.title-contrast {
-  color: $contrast-warning;
+  color: $arcane-cyan;
   text-align: center;
   margin-bottom: 0.25rem;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
 }
 
+h3.subtitle-contrast {
+  color: $arcane-violet;
+  text-align: center;
+  margin-bottom: 0.125rem;
+}
+
+
+/* ─── TEXTES ───────────────────────────────────────── */
+
 p.subtitle {
-  color: $blue-slate;
+  color: $arcane-muted;
   text-align: center;
 }
+
 p.subtitle-left {
-  color: $blue-slate;
+  color: $arcane-muted;
   text-align: left;
 }
+
+
+/* ─── BOUTON PRINCIPAL ─────────────────────────────── */
 
 .landing-button {
   width: 100%;
   font-size: 28px;
   padding: 12px;
   color: white;
-  border-radius: 6px;
-  background-color: $twilight-indigo;
+  border-radius: 10px;
+  background: linear-gradient(135deg, $arcane-cyan, $arcane-violet);
   text-align: center;
   cursor: pointer;
+  border: none;
+
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
+
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+  }
 }
+
+
+/* ─── INPUT ───────────────────────────────────────── */
 
 input {
   width: 100%;
   padding: 12px;
-  background: rgba($color: #ffffff, $alpha: 0.05);
-  border: 1px solid $slate-grey;
-  border-radius: 4px;
-  color: $slate-grey;
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 8px;
+  color: $arcane-text;
+
+  &:focus {
+    outline: none;
+    border-color: $arcane-cyan;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+  }
 }
 
-div.card {
-  padding: 6px;
+
+/* ─── CARTES PERSONNAGE ───────────────────────────── */
+
+@keyframes arcanePulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2),
+      0 0 20px rgba(124, 58, 237, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.5),
+      0 0 50px rgba(124, 58, 237, 0.3);
+  }
+
+  100% {
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2),
+      0 0 20px rgba(124, 58, 237, 0.1);
+  }
+}
+
+app-character-card.selected {
+  animation: arcanePulse 2.5s infinite ease-in-out;
+}
+
+app-character-card {
+  padding: 10px;
   height: 300px;
-  background: rgba($color: #ffffff, $alpha: 0.05);
-  border: 1px solid $slate-grey;
-  border-radius: 4px;
+  background: rgba(17, 24, 39, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 16px;
   min-width: 30%;
   margin: 6px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: $arcane-cyan;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2),
+      0 0 40px rgba(124, 58, 237, 0.1);
+  }
 }
 
-p.pill {
-  color: $contrast-warning;
-  text-align: center;
-  padding: 2px;
-  border-radius: 14px;
-  background-color: rgba($color: $contrast-warning, $alpha: .10);
+
+/* ─── CARTE SÉLECTIONNÉE ───────────────────────────── */
+
+app-character-card.selected {
+  border-color: $arcane-cyan;
+  background: linear-gradient(135deg,
+      var(--primary),
+      var(--secondary));
+
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.3);
+}
+
+
+/* ─── PILLS (tags) ───────────────────────────────── */
+
+div.pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+
+  p.pill {
+    color: $arcane-cyan;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 999px;
+
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+
+    font-size: 12px;
+  }
 }
