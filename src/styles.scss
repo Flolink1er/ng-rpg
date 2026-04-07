@@ -62,7 +62,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  font-family: 'Roboto', Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
   transition: all 1.5s ease-in-out;
 }
 
@@ -109,6 +109,15 @@ body::before {
   z-index: 0;
   pointer-events: none;
   filter: blur(3px);
+}
+
+h1,
+h2,
+h3,
+h4,
+input,
+.landing-button {
+  font-family: 'Cinzel';
 }
 
 
@@ -185,6 +194,11 @@ p.subtitle-left {
     fill: $contrast-warning;
     transition: all 0.2s ease;
   }
+}
+
+.landing-button.disabled {
+  opacity: .3;
+  cursor: not-allowed;
 }
 
 

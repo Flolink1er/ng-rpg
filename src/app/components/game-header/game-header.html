@@ -1,0 +1,29 @@
+<div class="header-game">
+
+  <div class="start-header">
+    <div class="logo-container">
+      <img class="icon-glow" src="/Chronicle of Angular.png" />
+      <h1>Chronicles of Angular</h1>
+    </div>
+
+    <div class="menu-list">
+      <div routerLinkActive="active" class="menu-item" routerLink="/map">🗺️ Carte</div>
+      <div routerLinkActive="active" class="menu-item" routerLink="/city">🏰 Ville</div>
+      <div routerLinkActive="active" class="menu-item" routerLink="/inventory">🎒 Inventaire</div>
+    </div>
+  </div>
+
+  <div class="end-header">
+    <div class="info-player">
+      <div class="gold">💰 10.5</div>
+      <div class="lvl">Niv. 5</div>
+      <div class="name">Luinil</div>
+    </div>
+
+    <div class="btn-container">
+      <div class="save" (click)="onSave()">Sauvegarder</div>
+      <div class="leave" (click)="onExit()">Quitter</div>
+    </div>
+  </div>
+
+</div>

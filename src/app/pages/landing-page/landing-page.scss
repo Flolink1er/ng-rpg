@@ -31,7 +31,6 @@ div.container {
     height: 85%;
 
     border-radius: 50%;
-    /* 🔥 clé pour éviter le rectangle */
 
     background: radial-gradient(circle,
         rgba(0, 229, 255, 0.7) 0%,
@@ -58,8 +57,6 @@ div.container {
     }
   }
 }
-
-
 
 .features-list {
   display: flex;

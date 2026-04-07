@@ -1,0 +1,110 @@
+.header-game {
+  padding-top: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 90px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-accent);
+  backdrop-filter: brightness(.3);
+}
+
+.start-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+}
+
+.end-header {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+
+  img {
+    max-height: 80px;
+    width: auto
+  }
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px;
+
+  .menu-item {
+    background: var(--bg-main);
+
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--arcane-cyan);
+    text-align: center;
+    padding: 10px;
+    display: inline;
+
+    &:hover {
+      background-color: var(--bg-secondary);
+      filter: brightness(1.2);
+      transform: scale(1.1);
+      transition: 0.5s ease-in-out;
+    }
+
+    &.active {
+      border-bottom: 2px solid var(--primary);
+      background-color: var(--bg-accent);
+    }
+  }
+}
+
+
+.info-player {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  div {
+    padding: 5px;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+      filter: brightness(1.2)
+    }
+  }
+
+  .save {
+    background-color: rgb(26, 169, 116);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+  }
+
+  .leave {
+    background-color: rgb(161, 5, 5);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+  }
+}
