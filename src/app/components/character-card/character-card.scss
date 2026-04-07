@@ -1,7 +1,24 @@
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .card-icon {
-  font-size: 2.75rem;
-  margin: .5rem;
-  text-align: center;
+  width: 10%;
+  fill: white;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .card-content {
+    z-index: 1;
+    color: var(--arcane-cyan)
+  }
 }
 
 p.pill,

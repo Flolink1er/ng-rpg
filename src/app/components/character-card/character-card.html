@@ -1,16 +1,43 @@
-<div class="card" (click)="cardSelected.emit()">
-  <div class="card-body">
-    @switch (item().type){
-    @case (ClassType.Mage){<p class="card-icon">⚔️</p>}
-    @case (ClassType.Warrior){<p class="card-icon">🧙‍♂️</p>}
-    @case (ClassType.Rogue){<p class="card-icon">🗡️</p>}
-    }
-    <h3 class="subtitle-contrast">{{item().name}}</h3>
-    <p class="smaller">{{item().description}}</p>
-  </div>
-  <div class="pill-container">
-    @for (feature of item().features; track $index) {
-    <p class="pill">{{feature}}</p>
+<div class="card">
+  <div class="default-card">
+    <div class="card-body">
+      <app-class-icon [type]="item().type" class="card-icon"></app-class-icon>
+      <h3 class="subtitle-contrast">{{item().name}}</h3>
+      <p class="smaller">{{item().description}}</p>
+    </div>
+    <div class="pill-container">
+      @for (feature of item().features; track $index) {
+      <p class="pill">{{feature}}</p>
+      }
+    </div>
+
+
+    @if (themeService.getTheme() === item().name){
+    <div class="stats-container">
+      <div class="card-content">
+        <h3 class="subtitle-contrast">Statistiques de départ</h3>
+        <div class="stat">
+          <div>ATK</div>
+          <div>{{item().characteristics.atk}}</div>
+        </div>
+        <div class="stat">
+          <div>DEF</div>
+          <div>{{item().characteristics.def}}</div>
+        </div>
+        <div class="stat">
+          <div>HP</div>
+          <div>{{item().characteristics.hp}}</div>
+        </div>
+        <div class="stat">
+          <div>Speed</div>
+          <div>{{item().characteristics.speed}}</div>
+        </div>
+        <div class="stat">
+          <div>Mana</div>
+          <div>{{item().characteristics.mana}}</div>
+        </div>
+      </div>
+    </div>
     }
   </div>
 </div>

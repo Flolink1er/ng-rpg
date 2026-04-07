@@ -1,6 +1,10 @@
 :root {
   --primary: #00E5FF;
   --secondary: #7C3AED;
+  --bg-main: #0b0f1a;
+  --bg-secondary: #111827;
+  --bg-accent: rgba(0, 229, 255, 0.08);
+  --arcane-cyan: $arcane-cyan;
 }
 
 /* ─── Couleurs (Obsidian Arcane) ───────────────────────────────────────────── */
@@ -53,12 +57,47 @@ $gradient-radial: radial-gradient(circle at center, #111827, #020617);
 
 html,
 body {
-  background: radial-gradient(circle at center, #111827, #020617);
+  background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-main) 68%, #020617 100%);
   color: $arcane-text;
   width: 100%;
   height: 100%;
   margin: 0;
   font-family: 'Roboto', Helvetica, sans-serif;
+  transition: all 1.5s ease-in-out;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+
+  background: radial-gradient(circle,
+      var(--bg-accent) 0%,
+      rgba(0, 0, 0, 0.03) 40%,
+      transparent 85%);
+
+  animation: slowRotate 60s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+  transition: all 2s ease-in-out;
+}
+
+body,
+body::before {
+  transition: background 0.6s ease;
+}
+
+@keyframes slowRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 #magic-bg {
@@ -69,7 +108,10 @@ body {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  filter: blur(3px);
 }
+
+
 
 
 /* ─── TITRES ───────────────────────────────────────── */
@@ -112,12 +154,16 @@ p.subtitle-left {
 /* ─── BOUTON PRINCIPAL ─────────────────────────────── */
 
 .landing-button {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+  width: calc(width(select-class));
   font-size: 28px;
   padding: 12px;
   color: white;
   border-radius: 10px;
-  background: linear-gradient(135deg, $arcane-cyan, $arcane-violet);
+  background: linear-gradient(135deg, var(--bg-accent) 20%, $arcane-cyan 100%);
   text-align: center;
   cursor: pointer;
   border: none;
@@ -129,6 +175,15 @@ p.subtitle-left {
   &:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+
+    .start-icon {
+      fill: $arcane-cyan;
+    }
+  }
+
+  .start-icon {
+    fill: $contrast-warning;
+    transition: all 0.2s ease;
   }
 }
 
@@ -176,7 +231,8 @@ app-character-card.selected {
 
 app-character-card {
   padding: 10px;
-  height: 300px;
+  padding-top: 50px;
+  height: 250px;
   background: rgba(17, 24, 39, 0.7);
   border: 1px solid rgba(148, 163, 184, 0.1);
   border-radius: 16px;
@@ -185,13 +241,13 @@ app-character-card {
 
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   cursor: pointer;
 
   backdrop-filter: blur(10px);
 
-  transition: all 0.25s ease;
+  transition: all 0.5s ease;
 
   &:hover {
     transform: translateY(-4px) scale(1.03);
@@ -204,13 +260,71 @@ app-character-card {
 
 /* ─── CARTE SÉLECTIONNÉE ───────────────────────────── */
 
-app-character-card.selected {
+app-character-card.isSelected {
   border-color: $arcane-cyan;
   background: linear-gradient(135deg,
-      var(--primary),
-      var(--secondary));
+      var(--bg-main),
+      var(--bg-accent));
+  backdrop-filter: blur(10px);
 
   box-shadow: 0 0 25px rgba(0, 229, 255, 0.3);
+  height: 400px;
+}
+
+.stat {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  animation: fadeInUp 0.4s ease forwards;
+
+  &:nth-of-type(2n) {
+    backdrop-filter: brightness(1.5);
+  }
+
+  &:nth-of-type(2n + 1) {
+    backdrop-filter: brightness(0.8);
+  }
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.stat:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.stat:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.stat:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.stat:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.stat:nth-child(6) {
+  animation-delay: 0.6s;
 }
 
 

@@ -5,13 +5,61 @@ div.container {
   margin: auto;
   display: flex;
   flex-direction: column;
+}
+
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   img {
-    max-width: 25vw;
-    max-height: 150px;
+    max-width: 30vw;
+    max-height: 250px;
     margin: auto;
-    animation: float 3s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 1;
+    filter: brightness(0.8)
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+
+    width: 20%;
+    height: 85%;
+
+    border-radius: 50%;
+    /* 🔥 clé pour éviter le rectangle */
+
+    background: radial-gradient(circle,
+        rgba(0, 229, 255, 0.7) 0%,
+        rgba(0, 229, 255, 0.3) 40%,
+        transparent 70%);
+
+    filter: blur(20px);
+    animation: glowPulse 3s ease-in-out infinite alternate;
+
+    z-index: 2;
+  }
+
+  @keyframes glowPulse {
+
+    0%,
+    100% {
+      transform: scale(0.8);
+      opacity: 0.2;
+    }
+
+    50% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
   }
 }
+
+
 
 .features-list {
   display: flex;
@@ -19,6 +67,7 @@ div.container {
   flex-wrap: wrap;
   justify-content: center;
   margin: 1rem;
+
   .feature-item {
     background-color: rgba($color: #ffffff, $alpha: 0.05);
     padding: 8px;
@@ -31,10 +80,12 @@ div.container {
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }

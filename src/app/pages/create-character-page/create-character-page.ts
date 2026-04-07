@@ -4,6 +4,7 @@ import { ClassType } from '../../enums/class-type.enum';
 import { ICharacter } from '../../models/character.interface';
 import { NgClass } from '@angular/common';
 import { CharacterCard } from "../../components/character-card/character-card";
+import { ThemeService } from '../../services/theme';
 
 @Component({
   selector: 'app-create-character-page',
@@ -17,31 +18,26 @@ export class CreateCharacterPage {
 
   public selectedCharacter ?: ICharacter;
 
+  constructor(private themeService: ThemeService){} //injection du service
+
   public onSelect(character: ICharacter){
     if (this.selectedCharacter?.type === character.type){
       this.selectedCharacter = undefined;
+      this.themeService.setTheme('Default');
     }else{
       this.selectedCharacter = character;
-      this.setTheme(this.selectedCharacter?.type);
+
+      switch (this.selectedCharacter?.type){
+        case ClassType.Mage :
+          this.themeService.setTheme('Mage');
+          break;
+        case ClassType.Rogue :
+          this.themeService.setTheme('Rogue');
+          break;
+        case ClassType.Warrior :
+          this.themeService.setTheme('Warrior');
+          break;
+      }
     }
   }
-
-  setTheme(classe: string) {
-  const root = document.documentElement;
-
-  if (classe === 'warrior') {
-    root.style.setProperty('--primary', '#F97316'); // orange
-    root.style.setProperty('--secondary', '#DC2626'); // rouge
-  }
-
-  if (classe === 'mage') {
-    root.style.setProperty('--primary', '#00E5FF'); // cyan
-    root.style.setProperty('--secondary', '#7C3AED'); // violet
-  }
-
-  if (classe === 'rogue') {
-    root.style.setProperty('--primary', '#22C55E'); // vert
-    root.style.setProperty('--secondary', '#4ADE80');
-  }
-}
 }
