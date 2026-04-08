@@ -1,0 +1,121 @@
+:host {
+  padding: 50px;
+  height: 250px;
+  background: rgba(17, 24, 39, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 16px;
+  margin: 6px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+
+  backdrop-filter: blur(10px);
+}
+
+.player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.player-header-sub {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-direction: row;
+}
+
+.gold-end {
+  justify-self: end;
+  color: yellow;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  h3,
+  h4 {
+    margin: 0;
+  }
+}
+
+.header-jauge {
+  display: flex;
+  justify-content: space-between;
+}
+
+progress {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.pv-jauge::-webkit-progress-bar {
+  /* style rules */
+}
+
+.pv-jauge::-webkit-progress-value {
+  /* style rules */
+  background-color: rgb(75, 195, 0);
+
+
+}
+
+.pv-jauge.danger::-webkit-progress-value {
+  background-color: rgb(180, 0, 0) !important;
+}
+
+.pv-jauge::-moz-progress-bar {
+  /* style rules */
+}
+
+.pm-jauge::-webkit-progress-bar {
+  /* style rules */
+}
+
+.pm-jauge::-webkit-progress-value {
+  /* style rules */
+  background-color: var(--arcane-cyan);
+}
+
+.pm-jauge::-moz-progress-bar {
+  /* style rules */
+}
+
+.exp-jauge::-webkit-progress-bar {
+  /* style rules */
+}
+
+.exp-jauge::-webkit-progress-value {
+  /* style rules */
+  background-color: var(--secondary);
+}
+
+.exp-jauge::-moz-progress-bar {
+  /* style rules */
+}
+
+.exp-jauge::-webkit-progress-value {
+  background: linear-gradient(270deg,
+      var(--arcane-cyan),
+      var(--arcane-purple),
+      var(--arcane-green));
+  background-size: 200% 100%;
+  animation: flow 3s linear infinite;
+}
+
+@keyframes flow {
+  from {
+    background-position: 0% 0;
+  }
+
+  to {
+    background-position: 200% 0;
+  }
+}

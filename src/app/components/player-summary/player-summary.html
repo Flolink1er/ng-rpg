@@ -1,1 +1,53 @@
-<p>player-summary works!</p>
+<div class="player-info">
+  <div class="player-header">
+    <div class="player-header-sub">
+      <svg fill="currentColor" width="60" height="60" viewBox="0 0 128 128" enable-background="new 0 0 128 128"
+        version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+        <polygon
+          points="89.37 62.876 73.631 77.192 61.907 76.074 67.763 72.436 76.831 52.119 56.837 61.846 53.383 67.812 51.9 56.129 65.719 39.951 65.929 38.292 64.383 37.725 48.094 47.084 43.549 58.979 43.453 67.967 38.375 68.401 38.553 91.626 61.78 91.086 62.059 86.001 71.041 85.626 82.79 80.714 91.636 64.141 91.022 62.613" />
+        <polygon
+          points="53.235 56.434 54.145 63.603 55.694 60.563 79.199 49.466 69.285 73.388 65.941 75.036 73.045 75.635 97.369 54.503 100.93 26.867 73.783 31.991" />
+        <path
+          d="m64.125 1.926c-34.352 0-62.199 27.847-62.199 62.199s27.847 62.199 62.199 62.199 62.199-27.847 62.199-62.199-27.848-62.199-62.199-62.199zm-0.334 118.55c-10.621 0-20.556-2.932-29.044-8.027l19.056-19.66-16.653 0.275-0.275-16.683-19.38 19.995c-6.438-9.178-10.218-20.354-10.218-32.414 0-31.212 25.302-56.514 56.514-56.514s56.514 25.302 56.514 56.514-25.303 56.514-56.514 56.514z" />
+      </svg>
+      <div class="main-info">
+        <h3>Luinil</h3>
+        <h4>Mage - Niv.5</h4>
+      </div>
+    </div>
+    <p class="gold-end">💰 10.5</p>
+  </div>
+
+  <div class="jauge">
+    <div class="jauge-item">
+      <div class="header-jauge">
+        <p>PV</p>
+        <p>{{player.currentHP}}/{{player.maxHP}}</p>
+      </div>
+      <div>
+        <progress class="pv-jauge" [ngClass]="{'danger' : player.currentHP < player.maxHP/2}" max="{{player.maxHP}}"
+          value="{{player.currentHP}}"></progress>
+      </div>
+    </div>
+
+    <div class="jauge-item">
+      <div class="header-jauge">
+        <p>PM</p>
+        <p>30/30</p>
+      </div>
+      <div>
+        <progress class="pm-jauge" max="30" value="30"></progress>
+      </div>
+    </div>
+
+    <div class="jauge-item">
+      <div class="header-jauge">
+        <p>EXP</p>
+        <p>{{player.exp}}/100</p>
+      </div>
+      <div>
+        <progress class="exp-jauge" max="100" value="{{player.exp}}"></progress>
+      </div>
+    </div>
+  </div>
+</div>

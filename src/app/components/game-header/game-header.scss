@@ -77,6 +77,14 @@
   gap: 20px;
   font-size: 1.2rem;
   text-align: center;
+
+  .gold {
+    color: yellow;
+  }
+
+  .lvl {
+    color: var(--arcane-cyan);
+  }
 }
 
 .btn-container {
