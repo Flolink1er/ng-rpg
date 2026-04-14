@@ -1,0 +1,62 @@
+:host {
+  display: flex;
+  width: 25%;
+}
+
+.player-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 8px;
+  background: var(--bg-main);
+  width: 100%;
+
+  >div {
+    width: 100%;
+  }
+
+  .type {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .stats-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+    font-size: 1.4rem;
+  }
+
+  .stat-inventory {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 6px;
+    background: var(--bg-accent);
+
+    .stat-value {
+      margin-left: auto;
+      font-weight: bold;
+    }
+  }
+
+  .gold {
+    color: #FFD166;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #EAB30833;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 20px 0px;
+  }
+}

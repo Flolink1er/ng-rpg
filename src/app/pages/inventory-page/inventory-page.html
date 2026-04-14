@@ -1,1 +1,11 @@
-<app-game-header></app-game-header>
+<app-game-header [player]="player"></app-game-header>
+<div class="inventory-page">
+  <div class="inventory-header">
+    <h1>🎒 Inventaire</h1>
+    <div class="exit">&LeftArrow; Retour</div>
+  </div>
+  <div class="inventory-container">
+    <app-player-inventory-summary [player]="player"></app-player-inventory-summary>
+    <app-player-inventory-bag [player]="player"></app-player-inventory-bag>
+  </div>
+</div>

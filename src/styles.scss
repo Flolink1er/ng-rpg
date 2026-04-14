@@ -66,6 +66,8 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   transition: all 1.5s ease-in-out;
+  scrollbar-width: none;
+  ;
 }
 
 body::before {

@@ -11,22 +11,22 @@
           d="m64.125 1.926c-34.352 0-62.199 27.847-62.199 62.199s27.847 62.199 62.199 62.199 62.199-27.847 62.199-62.199-27.848-62.199-62.199-62.199zm-0.334 118.55c-10.621 0-20.556-2.932-29.044-8.027l19.056-19.66-16.653 0.275-0.275-16.683-19.38 19.995c-6.438-9.178-10.218-20.354-10.218-32.414 0-31.212 25.302-56.514 56.514-56.514s56.514 25.302 56.514 56.514-25.303 56.514-56.514 56.514z" />
       </svg>
       <div class="main-info">
-        <h3>Luinil</h3>
-        <h4>Mage - Niv.5</h4>
+        <h3>{{player().name}}</h3>
+        <h4>{{player().hero.type}} - Niveau {{player().level}}</h4>
       </div>
     </div>
-    <p class="gold-end">💰 10.5</p>
+    <p class="gold-end">💰 {{player().gold}}</p>
   </div>
 
   <div class="jauge">
     <div class="jauge-item">
       <div class="header-jauge">
         <p>PV</p>
-        <p>{{player.currentHP}}/{{player.maxHP}}</p>
+        <p>{{player().currentHP}}/{{player().maxHP}}</p>
       </div>
       <div>
-        <progress class="pv-jauge" [ngClass]="{'danger' : player.currentHP < player.maxHP/2}" max="{{player.maxHP}}"
-          value="{{player.currentHP}}"></progress>
+        <progress class="pv-jauge" [ngClass]="{'danger' : player().currentHP < player().maxHP/2}"
+          max="{{player().maxHP}}" value="{{player().currentHP}}"></progress>
       </div>
     </div>
 
@@ -43,10 +43,10 @@
     <div class="jauge-item">
       <div class="header-jauge">
         <p>EXP</p>
-        <p>{{player.exp}}/100</p>
+        <p>{{player().exp}}/100</p>
       </div>
       <div>
-        <progress class="exp-jauge" max="100" value="{{player.exp}}"></progress>
+        <progress class="exp-jauge" max="100" value="{{player().exp}}"></progress>
       </div>
     </div>
   </div>

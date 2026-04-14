@@ -1,5 +1,6 @@
-<app-game-header></app-game-header>
+<app-game-header [player]="player"></app-game-header>
 
 <div class="container">
-  <app-player-summary></app-player-summary>
+  <app-player-summary [player]="player"></app-player-summary>
+  <app-map-selector></app-map-selector>
 </div>

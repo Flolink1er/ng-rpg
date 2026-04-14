@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
+import { Player } from '../../models/player';
 
 @Component({
   selector: 'app-game-header',
@@ -9,6 +10,7 @@ import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 })
 export class GameHeader {
   public readonly router= inject(Router);
+  public readonly player = input.required<Player>();
 
   public onSave():void{
 

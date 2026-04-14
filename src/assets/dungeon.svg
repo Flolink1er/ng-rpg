@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Outer pointed arch frame -->
+  <path d="M100 480 L100 200 Q100 80 256 32 Q412 80 412 200 L412 480 Z" />
+  
+  <!-- Inner pointed arch -->
+  <path d="M140 480 L140 220 Q140 120 256 72 Q372 120 372 220 L372 480 Z" />
+  
+  <!-- Vertical center line (door split) -->
+  <line x1="256" y1="480" x2="256" y2="100" />
+  
+  <!-- Horizontal planks -->
+  <line x1="140" y1="380" x2="372" y2="380" />
+  <line x1="140" y1="320" x2="372" y2="320" />
+  <line x1="140" y1="260" x2="372" y2="260" />
+  <line x1="140" y1="440" x2="372" y2="440" />
+  
+  <!-- Inner decorative pointed arch at top -->
+  <path d="M180 260 L180 230 Q180 160 256 120 Q332 160 332 230 L332 260" fill="none" />
+  
+  <!-- Small inner arch detail -->
+  <path d="M210 260 L210 240 Q210 190 256 155 Q302 190 302 240 L302 260" fill="none" />
+  
+  <!-- Door handle/knob on left door -->
+  <circle cx="235" cy="350" r="10" fill="currentColor" />
+  
+  <!-- Door handle/knob on right door -->
+  <circle cx="277" cy="350" r="10" fill="currentColor" />
+  
+  <!-- Keyhole -->
+  <circle cx="256" cy="400" r="8" />
+  <path d="M256 408 L256 420" />
+  
+  <!-- Top arch decorative cross -->
+  <line x1="256" y1="100" x2="256" y2="72" />
+  <line x1="240" y1="86" x2="272" y2="86" />
+  
+  <!-- Hinge details left -->
+  <rect x="140" y="290" width="20" height="8" rx="2" fill="currentColor" />
+  <rect x="140" y="410" width="20" height="8" rx="2" fill="currentColor" />
+  
+  <!-- Hinge details right -->
+  <rect x="352" y="290" width="20" height="8" rx="2" fill="currentColor" />
+  <rect x="352" y="410" width="20" height="8" rx="2" fill="currentColor" />
+  
+  <!-- Stone arch details - left -->
+  <path d="M100 480 L80 480" />
+  <path d="M412 480 L432 480" />
+  
+  <!-- Base step -->
+  <line x1="80" y1="480" x2="432" y2="480" />
+  <line x1="70" y1="496" x2="442" y2="496" />
+</svg>

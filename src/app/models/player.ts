@@ -3,19 +3,25 @@ import { ICharacter } from "./character.interface";
 export class Player{
   private readonly _name: string;
   private _hero: ICharacter;
+  private _gold: number = 0;
   private _level: number;
   private _exp: number;
   private _currentHP: number;
   private _maxHP: number;
+  private _currentPM: number;
+  private _maxPM: number;
 
 
-  constructor( name: string, hero : ICharacter, level: number, exp: number = 50, currentHP: number = hero.characteristics.hp/2+1, maxHP: number = hero.characteristics.hp){
+  constructor( name: string, hero : ICharacter, level: number, exp: number = 50, maxHP: number = hero.characteristics.hp){
     this._name = name;
     this._hero = hero;
     this._level = level;
     this._exp = exp;
-    this._currentHP = currentHP;
+    this._currentHP = hero.characteristics.hp;
     this._maxHP = maxHP;
+    this._gold = 0;
+    this._currentPM = hero.characteristics.mana;
+    this._maxPM = hero.characteristics.mana;
   }
 
   public get name(): string{
@@ -40,5 +46,17 @@ export class Player{
 
   public get maxHP(): number{
     return this._maxHP;
+  }
+
+  public get gold(): number{
+    return this._gold;
+  }
+
+  public get currentPM(): number{
+    return this._currentPM;
+  }
+
+  public get maxPM(): number{
+    return this._maxPM;
   }
 }

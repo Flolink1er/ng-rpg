@@ -10,7 +10,8 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--bg-accent);
-  backdrop-filter: brightness(.3);
+  backdrop-filter: brightness(.3) blur(10px);
+  z-index: 10;
 }
 
 .start-header {
@@ -93,8 +94,9 @@
   gap: 10px;
 
   div {
-    padding: 5px;
+    padding: 10px 20px;
     transition: all 0.5s ease-in-out;
+    margin-right: 10px;
 
     &:hover {
       transform: scale(1.1);

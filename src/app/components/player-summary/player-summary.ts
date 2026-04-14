@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { player1 } from '../../data/player.mock';
+import { Component, input } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { Player } from '../../models/player';
 
 @Component({
   selector: 'app-player-summary',
@@ -9,6 +9,5 @@ import { NgClass } from '@angular/common';
   styleUrl: './player-summary.scss',
 })
 export class PlayerSummary {
-  readonly player = player1;
-
+  player = input.required<Player>();
 }
