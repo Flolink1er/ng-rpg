@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { PlayerService } from '../../services/player.service';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [RouterLink, NgClass],
+  imports: [RouterLink],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
 })

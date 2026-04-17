@@ -1,1 +1,5 @@
-<app-game-header></app-game-header>
+@if (gameManagerService.isInit){
+@let player = gameManagerService.currentPlayer;
+
+<app-game-header [money]="player.money" [lvl]="player.lvl" [pseudo]="player.pseudo"></app-game-header>
+}

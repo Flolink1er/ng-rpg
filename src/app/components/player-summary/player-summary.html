@@ -1,7 +1,7 @@
 <div class="player-info">
   <div class="player-header">
     <div class="player-header-sub">
-      {{IconByType[player().type]}}
+      <app-class-icon [type]="player().type"></app-class-icon>
       <div class="main-info">
         <h3>{{player().pseudo}}</h3>
         <h4>{{player().type}} - Niveau {{player().lvl}}</h4>
