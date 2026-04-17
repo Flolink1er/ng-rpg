@@ -15,9 +15,13 @@
 
   <div class="end-header">
     <div class="info-player">
-      <div class="gold">💰 {{player().gold}}</div>
-      <div class="lvl">Niv. {{player().level}}</div>
-      <div class="name">{{player().name}}</div>
+      <div class="gold">
+        <div class="gold-icon">💰</div> {{money()}}
+      </div>
+      <div class="lvl">Niv. {{lvl()}}</div>
+      <div class="name">
+        <h4>{{pseudo()}}</h4>
+      </div>
     </div>
 
     <div class="btn-container">

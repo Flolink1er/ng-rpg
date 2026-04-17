@@ -1,6 +1,14 @@
-<app-game-header [player]="player"></app-game-header>
+@if (gameManagerService.isInit){
+@let player = gameManagerService.currentPlayer;
 
+<app-game-header [money]="player.money" [lvl]="player.lvl" [pseudo]="player.pseudo"></app-game-header>
 <div class="container">
   <app-player-summary [player]="player"></app-player-summary>
-  <app-map-selector></app-map-selector>
+  <app-map-selector [lvl]="player.lvl"></app-map-selector>
 </div>
+}
+@else {
+<div class="container">
+  <p>ERROR : Player not found</p>
+</div>
+}

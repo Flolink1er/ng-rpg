@@ -1,12 +1,16 @@
 import { ClassType } from "../enums/class-type.enum";
 
-export interface ICharacter {
-  type: ClassType;
+export interface IBaseEntity{
   name: string;
   description: string;
-  features: string[];
-  characteristics: ICharacteristics
+  characteristics: ICharacteristics;
 }
+
+export interface ICharacter extends IBaseEntity {
+  type: ClassType;
+  features: string[];
+}
+
 
 export interface ICharacteristics {
   atk: number;
@@ -14,4 +18,10 @@ export interface ICharacteristics {
   speed: number;
   hp: number;
   mana: number;
+}
+
+export interface IBaseInstance {
+  lvl: number,
+  currentHp: number,
+  currentMp: number,
 }

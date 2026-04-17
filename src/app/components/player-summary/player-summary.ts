@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { Player } from '../../models/player';
+import { IPlayer } from '../../models/player.interface';
+import { IconByType } from '../../enums/class-type.enum';
 
 @Component({
   selector: 'app-player-summary',
@@ -9,5 +10,6 @@ import { Player } from '../../models/player';
   styleUrl: './player-summary.scss',
 })
 export class PlayerSummary {
-  player = input.required<Player>();
+  public readonly player = input.required<IPlayer>();
+  public IconByType = IconByType;
 }

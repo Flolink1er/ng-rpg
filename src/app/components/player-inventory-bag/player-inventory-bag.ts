@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { Player } from '../../models/player';
+import { IPlayer } from '../../models/player.interface';
 
 @Component({
   selector: 'app-player-inventory-bag',
@@ -8,6 +9,6 @@ import { Player } from '../../models/player';
   styleUrl: './player-inventory-bag.scss',
 })
 export class PlayerInventoryBag {
-  public readonly player = input.required<Player>();
+  public readonly player = input.required<IPlayer>();
 
 }

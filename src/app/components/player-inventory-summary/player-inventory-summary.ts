@@ -1,6 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { Player } from '../../models/player';
 import { ICharacteristics } from '../../models/character.interface';
+import { IPlayer } from '../../models/player.interface';
 
 @Component({
   selector: 'app-player-inventory-summary',
@@ -9,5 +10,5 @@ import { ICharacteristics } from '../../models/character.interface';
   styleUrl: './player-inventory-summary.scss',
 })
 export class PlayerInventorySummary {
-  public readonly player = input.required<Player>();
+  public readonly player = input.required<IPlayer>();
 }

@@ -3,10 +3,19 @@
   --secondary: #7C3AED;
   --bg-main: #0b0f1a;
   --bg-secondary: #111827;
+  --bg-tertiary: rgba(17, 24, 39, 0.7);
   --bg-accent: rgba(0, 229, 255, 0.08);
   --arcane-cyan: #00E5FF;
   --arcane-green: #22ff7e;
   --arcane-purple: #7C3AED;
+  --gold-text: #FFD166;
+  --bg-gold: #EAB30833;
+  --bg-common: #94A3B8;
+  --text-common: #E2E8F0;
+  --bg-rare: #7C3AED;
+  --text-rare: #E2E8F0;
+  --bg-legendary: #F59E0B;
+  --text-legendary: #111827;
 }
 
 /* ─── Couleurs (Obsidian Arcane) ───────────────────────────────────────────── */
@@ -180,6 +189,7 @@ p.subtitle-left {
   text-align: center;
   cursor: pointer;
   border: none;
+  margin-bottom: 20px;
 
   box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
 

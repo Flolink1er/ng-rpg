@@ -1,6 +1,6 @@
 <div class="player-summary">
   <div class="type">
-    <h2>{{player().hero.type}}</h2>
+    <h2>{{player().type}}</h2>
     <div class="type-logo">
       <svg fill="currentColor" width="60" height="60" viewBox="0 0 128 128" enable-background="new 0 0 128 128"
         version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
@@ -14,35 +14,35 @@
     </div>
   </div>
   <div class="summary-info">
-    <h4>{{player().name}} - Niv. {{player().level}}</h4>
+    <h4>{{player().pseudo}} - Niv. {{player().lvl}}</h4>
   </div>
   <div class="stats-table">
     <div class="stat-inventory">
       <div class="stat-logo">⚔️</div>
       <div class="stat-name">Attaque</div>
-      <div class="stat-value">{{player().hero.characteristics.atk}}</div>
+      <div class="stat-value">{{player().characteristics.atk}}</div>
     </div>
     <div class="stat-inventory">
       <div class="stat-logo">🛡️</div>
       <div class="stat-name">Défense</div>
-      <div class="stat-value">{{player().hero.characteristics.def}}</div>
+      <div class="stat-value">{{player().characteristics.def}}</div>
     </div>
     <div class="stat-inventory">
       <div class="stat-logo">🪽</div>
       <div class="stat-name">Vitesse</div>
-      <div class="stat-value">{{player().hero.characteristics.speed}}</div>
+      <div class="stat-value">{{player().characteristics.speed}}</div>
     </div>
     <div class="stat-inventory">
       <div class="stat-logo">❤️</div>
       <div class="stat-name">PV Max</div>
-      <div class="stat-value">{{player().hero.characteristics.hp}}</div>
+      <div class="stat-value">{{player().characteristics.hp}}</div>
     </div>
     <div class="stat-inventory">
       <div class="stat-logo">💙</div>
       <div class="stat-name">PM Max</div>
-      <div class="stat-value">{{player().hero.characteristics.mana}}</div>
+      <div class="stat-value">{{player().characteristics.mana}}</div>
     </div>
 
   </div>
-  <div class="gold">💰 {{player().gold}} pièces d'or</div>
+  <div class="gold">💰 {{player().money}} pièces d'or</div>
 </div>

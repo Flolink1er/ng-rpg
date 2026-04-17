@@ -1,5 +1,7 @@
 :host {
-  min-width: 80%;
+  width: 75%;
+  border-radius: 10px;
+  background: var(--bg-tertiary);
 }
 
 .inventory-bag {
@@ -7,9 +9,7 @@
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  border-radius: 10px;
-  background: var(--bg-main);
-  width: 100%;
+
 
   .inventory-filters {
     display: flex;
@@ -17,5 +17,116 @@
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
+
+    .filter {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      border-radius: 15px;
+      background: var(--bg-accent);
+      color: var(--arcane-cyan);
+      font-weight: bold;
+      cursor: pointer;
+
+      &.active {
+        background: var(--arcane-cyan);
+        color: var(--bg-main);
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+      }
+
+      &:hover:not(.active) {
+        color: var(--arcane-cyan);
+        background-color: var(--bg-secondary);
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+      }
+    }
+  }
+
+  .inventory-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+
+    .inventory-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 15px;
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--bg-accent);
+      border-left: 3px solid var(--arcane-cyan);
+
+      .item-icon {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.7rem;
+      }
+
+      .item-info {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .item-name {
+        font-weight: bold;
+        color: var(--arcane-cyan);
+        font-size: 1.2rem;
+      }
+
+      .item-useBtn,
+      .item-equipBtn {
+        padding: 10px 15px;
+        border-radius: 8px;
+        background: var(--arcane-green);
+        color: var(--bg-main);
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: 20px;
+
+        &.equiped {
+          background-color: var(--arcane-cyan);
+        }
+      }
+
+      .item-rarity {
+        font-size: 0.9rem;
+        border-radius: 15px;
+        padding: 2px 8px;
+
+        &.common {
+          background: var(--bg-common);
+          color: var(--text-common);
+        }
+
+        &.rare {
+          background: var(--bg-rare);
+          color: var(--text-rare);
+        }
+
+        &.legendary {
+          background: var(--bg-legendary);
+          color: var(--text-legendary);
+        }
+      }
+
+      .item-quantity {
+        font-size: 1.2rem;
+        color: var(--arcane-green);
+      }
+
+      .item-info-sub {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 10px;
+      }
+    }
   }
 }

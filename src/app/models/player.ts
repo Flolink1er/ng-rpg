@@ -19,7 +19,7 @@ export class Player{
     this._exp = exp;
     this._currentHP = hero.characteristics.hp;
     this._maxHP = maxHP;
-    this._gold = 0;
+    this._gold = 150;
     this._currentPM = hero.characteristics.mana;
     this._maxPM = hero.characteristics.mana;
   }

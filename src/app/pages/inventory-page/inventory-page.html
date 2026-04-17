@@ -1,11 +1,20 @@
-<app-game-header [player]="player"></app-game-header>
+@if (gameManagerService.isInit){
+@let player = gameManagerService.currentPlayer;
+
+<app-game-header [money]="player.money" [lvl]="player.lvl" [pseudo]="player.pseudo"></app-game-header>
 <div class="inventory-page">
   <div class="inventory-header">
     <h1>🎒 Inventaire</h1>
-    <div class="exit">&LeftArrow; Retour</div>
+    <div class="exit" routerLink="/map">&LeftArrow; Retour</div>
   </div>
   <div class="inventory-container">
     <app-player-inventory-summary [player]="player"></app-player-inventory-summary>
     <app-player-inventory-bag [player]="player"></app-player-inventory-bag>
   </div>
 </div>
+}
+@else {
+<div class="container">
+  <p>ERROR : Player not found</p>
+</div>
+}

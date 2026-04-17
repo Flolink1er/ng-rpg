@@ -7,6 +7,8 @@ import { CharacterCard } from "../../components/character-card/character-card";
 import { ThemeService } from '../../services/theme';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PlayerService } from '../../services/player.service';
+import { IPlayer } from '../../models/player.interface';
 
 @Component({
   selector: 'app-create-character-page',
@@ -19,6 +21,7 @@ export class CreateCharacterPage {
   public readonly ClassType = ClassType;
   public readonly nameFormControl = new FormControl('', [Validators.required]);
   public readonly router = inject(Router);
+  public readonly playerService = inject(PlayerService);
 
   public selectedCharacter ?: ICharacter;
 
@@ -47,7 +50,18 @@ export class CreateCharacterPage {
 
   public createCharacter():void{
     if (this.nameFormControl.valid && this.selectedCharacter){
-      this.router.navigateByUrl('/map');
+      const player : IPlayer = {
+        ...this.selectedCharacter,
+        pseudo: this.nameFormControl.value!,
+        lvl : 1,
+        currentHp: this.selectedCharacter.characteristics.hp,
+        currentMp: this.selectedCharacter.characteristics.mana,
+        currentXp: 0,
+        money: 50
+      };
+
+      this.playerService.add(player);
+      this.router.navigateByUrl(`/map/${player.pseudo}`);
     }
   }
 }

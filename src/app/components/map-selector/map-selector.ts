@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-map-selector',
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass],
   templateUrl: './map-selector.html',
   styleUrl: './map-selector.scss',
 })
 export class MapSelector {
-
+  public readonly lvl = input.required<number>();
 }
