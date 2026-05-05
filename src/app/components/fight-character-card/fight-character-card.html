@@ -1,0 +1,27 @@
+<div class="card {{isPlayer() ? 'player' : 'enemy'}}">
+  <div class="name_box">
+    <h3>{{player().pseudo}}</h3>
+  </div>
+  <div class="type-logo"></div>
+  <div class="jauge">
+    <div class="jauge-item">
+      <div class="header-jauge">
+        <p>PV</p>
+        <p>{{player().currentHp}}/{{player().characteristics.hp}}</p>
+      </div>
+      <div>
+        <progress class="pv-jauge" [ngClass]="{'danger' : player().currentHp < player().characteristics.hp}"
+          max="{{player().characteristics.hp}}" value="{{player().characteristics.hp}}"></progress>
+      </div>
+    </div>
+
+    <div class="jauge-item">
+      <div class="header-jauge">
+        <p>PM</p>
+        <p>30/30</p>
+      </div>
+      <div>
+        <progress class="pm-jauge" max="30" value="30"></progress>
+      </div>
+    </div>
+  </div>

@@ -6,7 +6,15 @@
   <p class="subtitle">Un RPG au tour par tour</p>
   <div class="landing-button" routerLink="/create-character">✨ Nouvelle partie</div>
   @if (playerService.hasPlayerCreated){
-  <div class="landing-button">▶️ Parties sauvegardées</div>
+  @for (player of playerService.retrievePlayers() ; track player.pseudo){
+  <div class="landing-button resume-btn" (click)="initGameWithSavedPLayer(player)">
+    <h5>💾 Continuer</h5>
+    <div class="resume-info">
+      <p>{{player.pseudo}} - Niv. {{player.lvl}}</p>
+      <p>{{player.type}}</p>
+    </div>
+  </div>
+  }
   }
   <div class="features-list">
     <div class="feature-item">⚔️ Combat au tour par tour</div>

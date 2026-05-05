@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,4 +10,6 @@ import { RouterLink } from '@angular/router';
 })
 export class MapSelector {
   public readonly lvl = input.required<number>();
+
+  public readonly zoneSelected = output<string>();
 }

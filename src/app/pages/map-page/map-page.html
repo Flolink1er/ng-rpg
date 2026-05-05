@@ -4,7 +4,7 @@
 <app-game-header [money]="player.money" [lvl]="player.lvl" [pseudo]="player.pseudo"></app-game-header>
 <div class="container">
   <app-player-summary [player]="player"></app-player-summary>
-  <app-map-selector [lvl]="player.lvl"></app-map-selector>
+  <app-map-selector (zoneSelected)="redirectToFight($event)" [lvl]="player.lvl"></app-map-selector>
 </div>
 }
 @else {

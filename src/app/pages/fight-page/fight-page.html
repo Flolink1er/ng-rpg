@@ -1,0 +1,16 @@
+@if (gameManagerService.isInit){
+@let player = gameManagerService.currentPlayer;
+
+<app-game-header [money]="player.money" [lvl]="player.lvl" [pseudo]="player.pseudo"></app-game-header>
+
+<div class="container">
+  <div class="select-class">
+    <app-fight-character-card [isPlayer]="true" [player]="player" />
+    <h1>VS</h1>
+    <app-fight-character-card [isPlayer]="false" [player]="player" />
+  </div>
+
+  <app-fight-history class="history-card" />
+  <app-fight-actions />
+</div>
+}

@@ -257,7 +257,15 @@ app-character-card.selected {
   animation: arcanePulse 2.5s infinite ease-in-out;
 }
 
-app-character-card {
+.history-card {
+  background-color: var(--bg-accent) !important;
+  padding-top: 10px !important;
+  border: 2px solid var(--bg-gold) !important;
+}
+
+app-character-card,
+app-fight-character-card,
+app-fight-history {
   padding: 10px;
   padding-top: 50px;
   height: 250px;
@@ -271,17 +279,37 @@ app-character-card {
   flex-direction: column;
   justify-content: space-between;
 
-  cursor: pointer;
+
 
   backdrop-filter: blur(10px);
 
   transition: all 0.5s ease;
+}
 
-  &:hover {
-    transform: translateY(-4px) scale(1.03);
-    border-color: $arcane-cyan;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2),
-      0 0 40px rgba(124, 58, 237, 0.1);
+.app-character-card:hover {
+  cursor: pointer;
+  transform: translateY(-4px) scale(1.03);
+  border-color: $arcane-cyan;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2),
+    0 0 40px rgba(124, 58, 237, 0.1);
+}
+
+.select-class {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  .card-icon {
+    font-size: 2.75rem;
+    margin: .5rem;
+    text-align: center;
+  }
+
+  p.pill,
+  p.smaller {
+    text-align: center;
+    font-size: smaller;
   }
 }
 
@@ -375,4 +403,12 @@ div.pill-container {
 
     font-size: 12px;
   }
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 120px;
+  width: 75vw;
+  transform: translateX(-50%);
 }
