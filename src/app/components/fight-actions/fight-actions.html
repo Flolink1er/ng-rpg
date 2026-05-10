@@ -1,1 +1,20 @@
-<p>fight-actions works!</p>
+<div class="actions-box">
+  <div class="base-actions">
+    <div class="attack">
+      ⚔️ Attaquer
+    </div>
+    <div class="flee">
+      🏃‍➡️ Fuir
+    </div>
+  </div>
+
+  <div class="class-actions">
+    @for (skill of typeActions; track skill.name){
+    <div class="skill">
+      <div class="skill-icon">{{skill.icon}}</div>
+      <div class="skill-name">{{skill.name}}</div>
+      <div class="skill-cost">{{skill.cost}} PM</div>
+    </div>
+    }
+  </div>
+</div>

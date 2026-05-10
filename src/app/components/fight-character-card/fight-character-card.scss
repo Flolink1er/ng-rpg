@@ -2,3 +2,92 @@
   width: 50%;
   padding-top: 20px !important;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header,
+.header-jauge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.header-jauge {
+  display: flex;
+  justify-content: space-between;
+}
+
+progress {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.pv-jauge::-webkit-progress-bar {
+  /* style rules */
+}
+
+.pv-jauge::-webkit-progress-value {
+  /* style rules */
+  background-color: rgb(75, 195, 0);
+
+
+}
+
+.pv-jauge.danger::-webkit-progress-value {
+  background-color: rgb(180, 0, 0) !important;
+}
+
+.pv-jauge::-moz-progress-bar {
+  /* style rules */
+}
+
+.pm-jauge::-webkit-progress-bar {
+  /* style rules */
+}
+
+.pm-jauge::-webkit-progress-value {
+  /* style rules */
+  background-color: var(--arcane-cyan);
+}
+
+.pm-jauge::-moz-progress-bar {
+  /* style rules */
+}
+
+.exp-jauge::-webkit-progress-bar {
+  /* style rules */
+}
+
+.exp-jauge::-webkit-progress-value {
+  /* style rules */
+  background-color: var(--secondary);
+}
+
+.exp-jauge::-moz-progress-bar {
+  /* style rules */
+}
+
+.exp-jauge::-webkit-progress-value {
+  background: linear-gradient(270deg,
+      var(--arcane-cyan),
+      var(--arcane-purple),
+      var(--arcane-green));
+  background-size: 200% 100%;
+  animation: flow 3s linear infinite;
+}
+
+@keyframes flow {
+  from {
+    background-position: 0% 0;
+  }
+
+  to {
+    background-position: 200% 0;
+  }
+}

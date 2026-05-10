@@ -2,10 +2,11 @@ import { Component, input } from '@angular/core';
 import { IPlayer } from '../../models/player.interface';
 import { NgClass } from '@angular/common';
 import { IBaseEntity } from '../../models/character.interface';
+import { ClassIcon } from "../class-icon/class-icon";
 
 @Component({
   selector: 'app-fight-character-card',
-  imports: [NgClass],
+  imports: [NgClass, ClassIcon],
   templateUrl: './fight-character-card.html',
   styleUrl: './fight-character-card.scss',
 })

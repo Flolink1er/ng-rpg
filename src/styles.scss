@@ -16,6 +16,15 @@
   --text-rare: #E2E8F0;
   --bg-legendary: #F59E0B;
   --text-legendary: #111827;
+  --red-alert: #DC2626;
+  --red-energic: linear-gradient(135deg,
+      #7F1D1D,
+      #DC2626,
+      #F43F5E);
+  --red-accent: #F43F5E;
+  --green: #22C55E;
+  --green-mystic: #10B981;
+
 }
 
 /* ─── Couleurs (Obsidian Arcane) ───────────────────────────────────────────── */
@@ -261,6 +270,9 @@ app-character-card.selected {
   background-color: var(--bg-accent) !important;
   padding-top: 10px !important;
   border: 2px solid var(--bg-gold) !important;
+  margin-bottom: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 app-character-card,

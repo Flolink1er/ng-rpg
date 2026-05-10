@@ -6,6 +6,7 @@ import { MapSelector } from '../../components/map-selector/map-selector';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerService } from '../../services/player.service';
 import { GameManagerService } from '../../services/game-manager.service';
+import { ZoneInfo } from '../../models/map.interface';
 
 @Component({
   selector: 'app-map-page',
@@ -18,7 +19,7 @@ export class MapPage {
   public readonly router = inject(Router);
 
 
-  public redirectToFight(map: string){
+  public redirectToFight(map: ZoneInfo){
     this.router.navigateByUrl('/fight');
 
   }
