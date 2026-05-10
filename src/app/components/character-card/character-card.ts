@@ -1,8 +1,8 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { ClassType } from '../../enums/class-type.enum';
 import { ICharacter } from '../../models/character.interface';
 import { ClassIcon } from "../class-icon/class-icon";
-import { ThemeService } from '../../services/theme';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-character-card',
@@ -16,6 +16,6 @@ export class CharacterCard {
   public readonly isSelected = input.required<boolean>();
 
   public cardSelected = output<void>();
+  public themeService = inject(ThemeService);
 
-  constructor(public themeService: ThemeService){} //injection du service
 }

@@ -1,5 +1,4 @@
 div.container {
-  padding: 2rem;
   max-width: 65vw;
   max-height: 150px;
   margin: auto;
@@ -63,13 +62,21 @@ div.container {
   flex-direction: column;
   background-color: var(--bg-tertiary) !important;
   padding: 5px;
+
+  h5 {
+    margin: 10px;
+  }
 }
 
 .resume-info {
-  width: 100%;
+  width: 20%;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 1.2rem;
   background-color: var(--bg-secondary);
+
+  p {
+    margin: 5px;
+  }
 }
 
 .features-list {

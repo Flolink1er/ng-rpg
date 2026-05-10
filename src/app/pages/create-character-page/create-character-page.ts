@@ -4,7 +4,7 @@ import { ClassType } from '../../enums/class-type.enum';
 import { ICharacter } from '../../models/character.interface';
 import { NgClass } from '@angular/common';
 import { CharacterCard } from "../../components/character-card/character-card";
-import { ThemeService } from '../../services/theme';
+import { ThemeService } from '../../services/theme.service';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PlayerService } from '../../services/player.service';
@@ -24,10 +24,11 @@ export class CreateCharacterPage {
   public readonly router = inject(Router);
   public readonly playerService = inject(PlayerService);
   public readonly gameManagerService = inject(GameManagerService);
+  private themeService = inject(ThemeService);
 
   public selectedCharacter ?: ICharacter;
 
-  constructor(private themeService: ThemeService){} //injection du service
+
 
   public onSelect(character: ICharacter){
     if (this.selectedCharacter?.type === character.type){
