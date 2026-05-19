@@ -1,7 +1,7 @@
 import { EnemyRaceType } from "../enums/enemy-race-type.enum";
-import { IEnemy } from "../models/enemy.interface";
+import { IEnemy, IEnemyInstance } from "../models/enemy.interface";
 
-export const ENEMY_DATA: IEnemy[] = [
+export const ENEMY_DATA: IEnemyInstance[] = [
   {
     name: 'Gobelin',
     description: 'Petite créature verte, rapide et sournoise.',
@@ -12,31 +12,89 @@ export const ENEMY_DATA: IEnemy[] = [
       hp: 30,
       mana: 0,
     },
-    race: EnemyRaceType.Gobelin
+    race: EnemyRaceType.Gobelin,
+    lvl: 1,
+    currentHp: 30,
+    currentMp: 0,
+    kind: 'normal'
+  },{
+    name: 'Gobelin',
+    description: 'Petite créature verte, rapide et sournoise.',
+    characteristics: {
+      atk: 2,
+      def: 3,
+      speed: 12,
+      hp: 30,
+      mana: 0,
+    },
+    race: EnemyRaceType.Gobelin,
+    lvl: 1,
+    currentHp: 30,
+    currentMp: 0,
+    kind: 'normal'
+  },{
+    name: 'Gobelin',
+    description: 'Petite créature verte, rapide et sournoise.',
+    characteristics: {
+      atk: 2,
+      def: 3,
+      speed: 12,
+      hp: 30,
+      mana: 0,
+    },
+    race: EnemyRaceType.Gobelin,
+    lvl: 1,
+    currentHp: 30,
+    currentMp: 0,
+    kind: 'normal'
+  },
+  {
+    name: 'Gobelin',
+    description: 'Petite créature verte, rapide et sournoise.',
+    characteristics: {
+      atk: 2,
+      def: 3,
+      speed: 12,
+      hp: 30,
+      mana: 0,
+    },
+    race: EnemyRaceType.Gobelin,
+    lvl: 1,
+    currentHp: 30,
+    currentMp: 0,
+    kind: 'normal'
   },
   {
     name: 'Troll',
     description: 'Gros monstre avec une force brute, mais lent et particulièrement bête.',
     characteristics: {
-      atk: 15,
-      def: 10,
-      speed: 5,
-      hp: 80,
-      mana: 0,
+      atk: 15 * 1.3,
+      def: 10 * 1.3,
+      speed: 5 * 1.3,
+      hp: 80 * 1.3,
+      mana: 0 * 1.3,
     },
-    race: EnemyRaceType.Troll
+    race: EnemyRaceType.Troll,
+    lvl: 1,
+    currentHp: 80 * 1.3,
+    currentMp: 0,
+    kind: 'elite'
   },
   {
     name: 'Loup',
     description: 'Animal sauvage rapide et agressif.',
     characteristics: {
-      atk: 8,
-      def: 8,
-      speed: 15,
-      hp: 50,
-      mana: 0,
+      atk: 8 * 1.6,
+      def: 8 * 1.6,
+      speed: 15 * 1.6,
+      hp: 50 * 1.6,
+      mana: 0 * 1.6,
     },
-    race: EnemyRaceType.Loup
+    race: EnemyRaceType.Loup,
+    lvl: 1,
+    currentHp: 50 * 1.6,
+    currentMp: 0,
+    kind: 'boss'
   },
   {
     name: 'Squelette',
@@ -48,7 +106,11 @@ export const ENEMY_DATA: IEnemy[] = [
       hp: 60,
       mana: 0,
     },
-    race: EnemyRaceType.Squelette
+    race: EnemyRaceType.Squelette,
+    lvl: 1,
+    currentHp: 60,
+    currentMp: 0,
+    kind: 'normal'
   },
   {
     name: 'Mage Sombre',
@@ -60,7 +122,11 @@ export const ENEMY_DATA: IEnemy[] = [
       hp: 50,
       mana: 100,
     },
-    race: EnemyRaceType.MageSombre
+    race: EnemyRaceType.MageSombre,
+    lvl: 1,
+    currentHp: 50,
+    currentMp: 100,
+    kind: 'normal'
   },
   {
     name: 'Liche',
@@ -72,7 +138,11 @@ export const ENEMY_DATA: IEnemy[] = [
       hp: 100,
       mana: 150,
     },
-    race: EnemyRaceType.Liche
+    race: EnemyRaceType.Liche,
+    lvl: 1,
+    currentHp: 100,
+    currentMp: 150,
+    kind: 'normal'
   },
   {
     name: 'Harpie',
@@ -84,7 +154,11 @@ export const ENEMY_DATA: IEnemy[] = [
       hp: 50,
       mana: 0,
     },
-    race: EnemyRaceType.Harpie
+    race: EnemyRaceType.Harpie,
+    lvl: 1,
+    currentHp: 50,
+    currentMp: 0,
+    kind: 'normal'
   },
   {
     name: 'Golem',
@@ -96,7 +170,11 @@ export const ENEMY_DATA: IEnemy[] = [
       hp: 100,
       mana: 0,
     },
-    race: EnemyRaceType.Golem
+    race: EnemyRaceType.Golem,
+    lvl: 1,
+    currentHp: 100,
+    currentMp: 0,
+    kind: 'normal'
   },
   {
     name: 'Dragon',
@@ -108,6 +186,10 @@ export const ENEMY_DATA: IEnemy[] = [
       hp: 200,
       mana: 200,
     },
-    race: EnemyRaceType.Dragon
+    race: EnemyRaceType.Dragon,
+    lvl: 1,
+    currentHp: 200,
+    currentMp: 200,
+    kind: 'normal'
   }
 ]

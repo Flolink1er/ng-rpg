@@ -1,7 +1,8 @@
-import { Component, ElementRef, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { Subscription } from 'rxjs';
+import { Random } from './services/random.service';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,10 @@ export class App {
   mouse = { x: 0, y: 0 };
   currentTheme = 'Default';
   subscription!: Subscription;
+  randomService = inject(Random);
 
-  constructor(private themeService: ThemeService){}
+  constructor(private themeService: ThemeService){
+  }
 
   ngAfterViewInit() {
     this.subscription = this.themeService.theme$.subscribe(theme => {

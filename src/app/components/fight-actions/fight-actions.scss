@@ -10,10 +10,6 @@
 }
 
 
-/* ───────────────────────────────────────── */
-/* Actions communes */
-/* ───────────────────────────────────────── */
-
 .base-actions,
 .class-actions {
   display: flex;
@@ -21,16 +17,11 @@
 }
 
 
-/* ───────────────────────────────────────── */
-/* Effets interactifs communs */
-/* ───────────────────────────────────────── */
-
 .attack,
 .flee,
 .skill {
   cursor: pointer;
 
-  /* 🔥 optimisation animation */
   will-change: transform;
 
   transition:
@@ -39,12 +30,10 @@
     box-shadow 0.2s ease;
 
   &:hover {
-    /* ✨ micro UX improvement */
     transform: translateY(-2px) scale(1.01);
 
     filter: brightness(0.95);
 
-    /* léger glow */
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
   }
 
@@ -53,10 +42,6 @@
   }
 }
 
-
-/* ───────────────────────────────────────── */
-/* Base actions */
-/* ───────────────────────────────────────── */
 
 .base-actions {
 
@@ -83,7 +68,7 @@
   }
 
   .flee {
-    background: var(--green-mystic);
+    background: var(--green-energic);
 
     &:hover {
       box-shadow: 0 0 20px rgba(34, 197, 94, 0.25);
@@ -91,10 +76,6 @@
   }
 }
 
-
-/* ───────────────────────────────────────── */
-/* Skills */
-/* ───────────────────────────────────────── */
 
 .class-actions {
 
@@ -128,6 +109,49 @@
     }
 
     .skill-cost {
+      color: var(--arcane-purple);
+      font-style: italic;
+    }
+  }
+}
+
+
+.item-actions {
+
+  .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: max-content;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid var(--green-mystic);
+
+    background: var(--bg-tertiary);
+
+    &:hover {
+      cursor: pointer;
+      box-shadow:
+        0 0 20px rgba(0, 229, 255, 0.12),
+        0 0 40px rgba(124, 58, 237, 0.08);
+      transform: translateY(-2px) scale(1.01);
+
+      filter: brightness(0.95);
+    }
+
+    .item-icon {
+      font-size: 1.3rem;
+      text-align: justify;
+    }
+
+    .item-name {
+      font-size: 1.2rem;
+      font-family: 'Cinzel', serif;
+    }
+
+    .item-cost {
+      font-size: 1rem;
       color: var(--arcane-purple);
       font-style: italic;
     }

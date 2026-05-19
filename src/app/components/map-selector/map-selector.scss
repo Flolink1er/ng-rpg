@@ -49,7 +49,8 @@
 
   &.locked {
     background: var(--bg-secondary);
-    cursor: not-allowed;
+    cursor: not-allowed !important;
+    pointer-events: none;
     opacity: 0.6;
   }
 

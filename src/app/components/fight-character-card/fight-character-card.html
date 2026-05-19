@@ -1,34 +1,86 @@
+@if(isPlayer()){
 <div class="card {{isPlayer() ? 'player' : 'enemy'}}">
   <div class="card-header">
-    <div class="type-logo">
-      @if (isPlayer()){
-      <app-class-icon [type]="player().type" />
-      }
-    </div>
     <div class="name_box">
       <h3>{{player().pseudo}}</h3>
     </div>
-  </div>
-
-  <div class="jauge">
-    <div class="jauge-item">
-      <div class="header-jauge">
-        <p>PV</p>
-        <p>{{player().currentHp}}/{{player().characteristics.hp}}</p>
-      </div>
-      <div>
-        <progress class="pv-jauge" [ngClass]="{'danger' : player().currentHp < player().characteristics.hp}"
-          max="{{player().characteristics.hp}}" value="{{player().characteristics.hp}}"></progress>
-      </div>
-    </div>
-
-    <div class="jauge-item">
-      <div class="header-jauge">
-        <p>PM</p>
-        <p>30/30</p>
-      </div>
-      <div>
-        <progress class="pm-jauge" max="30" value="30"></progress>
-      </div>
+    <div class="type-logo">
+      <app-class-icon [type]="player().type" />
     </div>
   </div>
+</div>
+}
+@else {
+<div class="card {{isPlayer() ? 'player' : 'enemy'}}">
+  <div class="card-header">
+    <div class="header-sub">
+      <div class="name_box">
+        <h3>{{enemy().name}}</h3>
+      </div>
+      <div class="type-logo">
+        <app-enemy-icon [type]="enemy().race" />
+      </div>
+    </div>
+    <div class="enemy-rarity {{enemy().kind}}">
+      {{enemy().kind}}
+    </div>
+  </div>
+</div>
+}
+
+<div class="jauge">
+  <div class="jauge-item">
+    <div class="header-jauge">
+      <p>PV</p>
+      @if(isPlayer()){
+      <p>{{player().currentHp}}/{{player().characteristics.hp}}</p>
+      }
+      @else {
+      <p>{{enemy().currentHp}}/{{enemy().characteristics.hp}}</p>
+      }
+    </div>
+    <div>
+      @if (isPlayer()){
+      <progress class="pv-jauge" [ngClass]="{'danger' : player().currentHp < player().characteristics.hp}"
+        max="{{player().characteristics.hp}}" value="{{player().currentHp}}"></progress>
+      }
+      @else {
+      <progress class="pv-jauge" [ngClass]="{'danger' : enemy().currentHp < enemy().characteristics.hp}"
+        max="{{enemy().characteristics.hp}}" value="{{enemy().currentHp}}"></progress>
+      }
+    </div>
+  </div>
+
+  <div class="jauge-item">
+    <div class="header-jauge">
+      <p>PM</p>
+      @if(isPlayer()){
+      <p>{{player().currentMp}}/{{player().characteristics.mana}}</p>
+      }
+      @else {
+      <p>{{enemy().currentMp}}/{{enemy().characteristics.mana}}</p>
+      }
+    </div>
+    <div>
+      @if (isPlayer()){
+      <progress class="pm-jauge" max="{{player().characteristics.mana}}" value="{{player().currentMp}}"></progress>
+      }
+      @else {
+      <progress class="pm-jauge" max="{{enemy().characteristics.mana}}" value="{{enemy().currentMp}}"></progress>
+      }
+    </div>
+  </div>
+
+  <div class="stats-container">
+    @if (isPlayer()){
+    <div class="stat-cell atk">⚔️ {{player().characteristics.atk}}</div>
+    <div class="stat-cell def">🛡️ {{player().characteristics.def}}</div>
+    <div class="stat-cell spd">💨 {{player().characteristics.speed}}</div>
+    }
+    @else {
+    <div class="stat-cell atk">⚔️ {{enemy().characteristics.atk}}</div>
+    <div class="stat-cell def">🛡️ {{enemy().characteristics.def}}</div>
+    <div class="stat-cell spd">💨 {{enemy().characteristics.speed}}</div>
+    }
+  </div>
+</div>

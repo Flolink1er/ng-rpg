@@ -17,4 +17,14 @@
     </div>
     }
   </div>
+
+  <div class="item-actions">
+    @for (item of inventoryActions; track item.name){
+    <div class="item">
+      <div class="item-icon">{{item.icon}}</div>
+      <div class="item-name">{{item.name}}</div>
+      <div class="item-qty">x{{item.qty}}</div>
+    </div>
+    }
+  </div>
 </div>
