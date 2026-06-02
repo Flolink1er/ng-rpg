@@ -1,4 +1,4 @@
-import { EnemyRaceType } from "../enums/enemy-race-type.enum";
+import { EnemyRaceType, KindEnemy } from "../enums/enemy-race-type.enum";
 import { IBaseEntity, IBaseInstance } from "./character.interface";
 
 export interface IEnemy extends IBaseEntity {
@@ -6,5 +6,5 @@ export interface IEnemy extends IBaseEntity {
 }
 
 export interface IEnemyInstance extends IEnemy, IBaseInstance{
-  kind : 'normal' | 'elite' | 'boss';
+  kind : KindEnemy;
 }

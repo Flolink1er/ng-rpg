@@ -1,9 +1,9 @@
 <div>
-  <p class=""><i>{{now | date:'HH-MM-ss'}}</i>: &nbsp;C'est l'heure dudududu DUEL !</p>
-  <p class=""><i>{{now | date:'HH-MM-ss'}}</i>: &nbsp;C'est l'heure dudududu DUEL !</p>
-  <p class=""><i>{{now | date:'HH-MM-ss'}}</i>: &nbsp;C'est l'heure dudududu DUEL !</p>
-  <p class=""><i>{{now | date:'HH-MM-ss'}}</i>: &nbsp;C'est l'heure dudududu DUEL !</p>
-  <p class=""><i>{{now | date:'HH-MM-ss'}}</i>: &nbsp;C'est l'heure dudududu DUEL !</p>
-  <p class=""><i>{{now | date:'HH-MM-ss'}}</i>: &nbsp;C'est l'heure dudududu DUEL !</p>
-  <p class=""><i>{{now | date:'HH-MM-ss'}}</i>: &nbsp;C'est l'heure dudududu DUEL !</p>
+  @for(log of logs; track log){
+  <p>
+    <i>{{log.time | date: 'dd/MM/yy, H:MM'}}</i>
+
+    {{log.icon}} => {{log.text}}
+  </p>
+  }
 </div>

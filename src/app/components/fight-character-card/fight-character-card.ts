@@ -20,4 +20,5 @@ export class FightCharacterCard {
   public readonly isPlayer = input.required<boolean>();
   public readonly player = computed(()=> this.gameManagerService.currentPlayer);
   public readonly enemy = computed(()=> this.gameManagerService.currentEnemy)
+  public ENEMYDATATEMPLATE = '_blank'
 }

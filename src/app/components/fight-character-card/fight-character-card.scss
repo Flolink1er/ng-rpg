@@ -54,15 +54,15 @@ progress {
   border-radius: 15px;
   margin-right: 20px;
 
-  &.normal {
+  &.NORMAL {
     background-color: var(--bg-common);
   }
 
-  &.elite {
+  &.ELITE {
     background-color: var(--bg-rare);
   }
 
-  &.boss {
+  &.BOSS {
     background-color: var(--bg-legendary);
   }
 }

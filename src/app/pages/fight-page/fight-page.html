@@ -3,6 +3,7 @@
 
 <app-game-header [money]="player.money" [lvl]="player.lvl" [pseudo]="player.pseudo"></app-game-header>
 
+@if (gameManagerService.state() !== GameState.NONE){
 <div class="container">
   <div class="select-class">
     <app-fight-character-card [isPlayer]="true" />
@@ -14,4 +15,11 @@
   <app-fight-actions />
 
 </div>
+}
+@else {
+<div class="container">
+  <h1>Chargement....</h1>
+  <p>{{gameManagerService.state()}}</p>
+</div>
+}
 }

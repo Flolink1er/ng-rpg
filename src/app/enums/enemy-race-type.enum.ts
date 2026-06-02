@@ -9,3 +9,9 @@ export enum EnemyRaceType {
   Golem = 'GOLEM',
   Dragon = 'DRAGON'
 }
+
+export enum KindEnemy{
+  Normal = 'NORMAL',
+  Elite = 'ELITE',
+  Boss = 'BOSS'
+}
