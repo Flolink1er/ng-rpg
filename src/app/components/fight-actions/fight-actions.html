@@ -1,30 +1,30 @@
 <div class="actions-box">
   <div class="base-actions">
-    <div class="attack">
+    <button class="attack" [disabled]="disabled()" (click)="playerAtk.emit()">
       ⚔️ Attaquer
-    </div>
-    <div class="flee">
+    </button>
+    <button class="flee" [disabled]="disabled()">
       🏃‍➡️ Fuir
-    </div>
+    </button>
   </div>
 
   <div class="class-actions">
     @for (skill of typeActions; track skill.name){
-    <div class="skill">
+    <button class="skill" [disabled]="disabled()">
       <div class="skill-icon">{{skill.icon}}</div>
       <div class="skill-name">{{skill.name}}</div>
       <div class="skill-cost">{{skill.cost}} PM</div>
-    </div>
+    </button>
     }
   </div>
 
   <div class="item-actions">
     @for (item of inventoryActions; track item.name){
-    <div class="item">
+    <button class="item" [disabled]="disabled()">
       <div class="item-icon">{{item.icon}}</div>
       <div class="item-name">{{item.name}}</div>
       <div class="item-qty">x{{item.qty}}</div>
-    </div>
+    </button>
     }
   </div>
 </div>

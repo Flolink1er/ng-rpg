@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 interface TypeActions {
   icon: string;
@@ -19,6 +19,9 @@ interface InventoryActions {
   styleUrl: './fight-actions.scss',
 })
 export class FightActions {
+  public readonly disabled = input.required<boolean>();
+  public playerAtk = output<void>();
+
   public readonly typeActions: TypeActions[] = [
     { icon: '⚔️', name: 'Taillade', cost: 10 },
     { icon: '🛡️', name: 'Coup de bouclier', cost: 15 },

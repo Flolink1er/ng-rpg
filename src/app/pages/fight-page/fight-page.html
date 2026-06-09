@@ -11,8 +11,9 @@
     <app-fight-character-card [isPlayer]="false" />
   </div>
 
-  <app-fight-history class="history-card" />
-  <app-fight-actions />
+  <app-fight-history class="history-card" [logs]="logEntryService.logEntries" />
+  <app-fight-actions [disabled]="gameManagerService.state() !== GameState.PLAYER_TURN"
+    (playerAtk)="gameManagerService.fightLoop()" />
 
 </div>
 }

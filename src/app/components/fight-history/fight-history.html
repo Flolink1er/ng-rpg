@@ -1,9 +1,9 @@
 <div>
-  @for(log of logs; track log){
+  @for(log of logs(); track log){
   <p>
     <i>{{log.time | date: 'dd/MM/yy, H:MM'}}</i>
 
-    {{log.icon}} => {{log.text}}
+    ⇾ {{log.icon}} {{log.text}}
   </p>
   }
 </div>

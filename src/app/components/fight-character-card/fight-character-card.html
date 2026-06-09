@@ -33,20 +33,21 @@
     <div class="header-jauge">
       <p>PV</p>
       @if(isPlayer()){
-      <p>{{player().currentHp}}/{{player().characteristics.hp}}</p>
+      <p>{{player().currentHp | interfaceDigits}}/{{player().characteristics.hp | interfaceDigits}}</p>
       }
       @else {
-      <p>{{enemy().currentHp}}/{{enemy().characteristics.hp}}</p>
+      <p>{{enemy().currentHp | interfaceDigits}}/{{enemy().characteristics.hp | interfaceDigits}}</p>
       }
     </div>
     <div>
       @if (isPlayer()){
-      <progress class="pv-jauge" [ngClass]="{'danger' : player().currentHp < player().characteristics.hp}"
-        max="{{player().characteristics.hp}}" value="{{player().currentHp}}"></progress>
+      <progress class="pv-jauge" [ngClass]="{'danger' : player().currentHp < player().characteristics.hp/2}"
+        max="{{player().characteristics.hp |interfaceDigits}}"
+        value="{{player().currentHp|interfaceDigits}}"></progress>
       }
       @else {
-      <progress class="pv-jauge" [ngClass]="{'danger' : enemy().currentHp < enemy().characteristics.hp}"
-        max="{{enemy().characteristics.hp}}" value="{{enemy().currentHp}}"></progress>
+      <progress class="pv-jauge" [ngClass]="{'danger' : enemy().currentHp < enemy().characteristics.hp/2}"
+        max="{{enemy().characteristics.hp|interfaceDigits}}" value="{{enemy().currentHp|interfaceDigits}}"></progress>
       }
     </div>
   </div>
@@ -55,32 +56,34 @@
     <div class="header-jauge">
       <p>PM</p>
       @if(isPlayer()){
-      <p>{{player().currentMp}}/{{player().characteristics.mana}}</p>
+      <p>{{player().currentMp|interfaceDigits}}/{{player().characteristics.mana|interfaceDigits}}</p>
       }
       @else {
-      <p>{{enemy().currentMp}}/{{enemy().characteristics.mana}}</p>
+      <p>{{enemy().currentMp|interfaceDigits}}/{{enemy().characteristics.mana|interfaceDigits}}</p>
       }
     </div>
     <div>
       @if (isPlayer()){
-      <progress class="pm-jauge" max="{{player().characteristics.mana}}" value="{{player().currentMp}}"></progress>
+      <progress class="pm-jauge" max="{{player().characteristics.mana|interfaceDigits}}"
+        value="{{player().currentMp|interfaceDigits}}"></progress>
       }
       @else {
-      <progress class="pm-jauge" max="{{enemy().characteristics.mana}}" value="{{enemy().currentMp}}"></progress>
+      <progress class="pm-jauge" max="{{enemy().characteristics.mana|interfaceDigits}}"
+        value="{{enemy().currentMp|interfaceDigits}}"></progress>
       }
     </div>
   </div>
 
   <div class="stats-container">
     @if (isPlayer()){
-    <div class="stat-cell atk">⚔️ {{player().characteristics.atk}}</div>
-    <div class="stat-cell def">🛡️ {{player().characteristics.def}}</div>
-    <div class="stat-cell spd">💨 {{player().characteristics.speed}}</div>
+    <div class="stat-cell atk">⚔️ {{player().characteristics.atk|interfaceDigits}}</div>
+    <div class="stat-cell def">🛡️ {{player().characteristics.def|interfaceDigits}}</div>
+    <div class="stat-cell spd">💨 {{player().characteristics.speed|interfaceDigits}}</div>
     }
     @else {
-    <div class="stat-cell atk">⚔️ {{enemy().characteristics.atk}}</div>
-    <div class="stat-cell def">🛡️ {{enemy().characteristics.def}}</div>
-    <div class="stat-cell spd">💨 {{enemy().characteristics.speed}}</div>
+    <div class="stat-cell atk">⚔️ {{enemy().characteristics.atk|interfaceDigits}}</div>
+    <div class="stat-cell def">🛡️ {{enemy().characteristics.def|interfaceDigits}}</div>
+    <div class="stat-cell spd">💨 {{enemy().characteristics.speed|interfaceDigits}}</div>
     }
   </div>
 </div>
