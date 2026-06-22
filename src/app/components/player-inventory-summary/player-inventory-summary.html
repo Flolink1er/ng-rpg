@@ -20,29 +20,29 @@
     <div class="stat-inventory">
       <div class="stat-logo">⚔️</div>
       <div class="stat-name">Attaque</div>
-      <div class="stat-value">{{player().characteristics.atk}}</div>
+      <div class="stat-value">{{player().characteristics.atk | interfaceDigits}}</div>
     </div>
     <div class="stat-inventory">
       <div class="stat-logo">🛡️</div>
       <div class="stat-name">Défense</div>
-      <div class="stat-value">{{player().characteristics.def}}</div>
+      <div class="stat-value">{{player().characteristics.def | interfaceDigits}}</div>
     </div>
     <div class="stat-inventory">
       <div class="stat-logo">🪽</div>
       <div class="stat-name">Vitesse</div>
-      <div class="stat-value">{{player().characteristics.speed}}</div>
+      <div class="stat-value">{{player().characteristics.speed | interfaceDigits}}</div>
     </div>
     <div class="stat-inventory">
       <div class="stat-logo">❤️</div>
       <div class="stat-name">PV Max</div>
-      <div class="stat-value">{{player().characteristics.hp}}</div>
+      <div class="stat-value">{{player().characteristics.hp | interfaceDigits}}</div>
     </div>
     <div class="stat-inventory">
       <div class="stat-logo">💙</div>
       <div class="stat-name">PM Max</div>
-      <div class="stat-value">{{player().characteristics.mana}}</div>
+      <div class="stat-value">{{player().characteristics.mana | interfaceDigits}}</div>
     </div>
 
   </div>
-  <div class="gold">💰 {{player().money}} pièces d'or</div>
+  <div class="gold">💰 {{player().money | interfaceDigits}} pièces d'or</div>
 </div>

@@ -27,6 +27,7 @@
       color: var(--arcane-cyan);
       font-weight: bold;
       cursor: pointer;
+      gap: 5px;
 
       &.active {
         background: var(--arcane-cyan);
@@ -57,6 +58,18 @@
       border-radius: 10px;
       background: var(--bg-accent);
       border-left: 3px solid var(--arcane-cyan);
+
+      &.item-Common {
+        border-color: var(--bg-common);
+      }
+
+      &.item-Rare {
+        border-color: var(--bg-rare);
+      }
+
+      &.item-Legendary {
+        border-color: var(--bg-legendary);
+      }
 
       .item-icon {
         width: 50px;
@@ -100,17 +113,17 @@
         border-radius: 15px;
         padding: 2px 8px;
 
-        &.common {
+        &.Common {
           background: var(--bg-common);
           color: var(--text-common);
         }
 
-        &.rare {
+        &.Rare {
           background: var(--bg-rare);
           color: var(--text-rare);
         }
 
-        &.legendary {
+        &.Legendary {
           background: var(--bg-legendary);
           color: var(--text-legendary);
         }

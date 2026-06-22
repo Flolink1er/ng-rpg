@@ -36,6 +36,12 @@
 
 .type-logo {
   margin-right: auto;
+
+  &.enemy-logo {
+    position: absolute;
+    top: -10px;
+    left: 50px;
+  }
 }
 
 .jauge {

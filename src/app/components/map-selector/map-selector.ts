@@ -3,7 +3,8 @@ import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ZoneInfo } from '../../models/map.interface';
 import { MapDifficulty, MapType } from '../../enums/map-type.enum';
-import { MapIcon } from "../map-icon/map-icon";
+import { MapIcon } from '../map-icon/map-icon';
+import { ZoneMap } from '../../enums/zone.enum';
 
 @Component({
   selector: 'app-map-selector',
@@ -28,6 +29,7 @@ export class MapSelector {
       difficultyColor: '#2ecc71',
       minLevel: 1,
       enemies: 'Loups, Gobelins, Trolls',
+      zone: MapType.Forest,
     },
     {
       id: MapType.Dungeon,
@@ -36,8 +38,9 @@ export class MapSelector {
       icon: '🏚️',
       difficulty: MapDifficulty.Moyen,
       difficultyColor: '#f39c12',
-      minLevel: 3,
+      minLevel: 5,
       enemies: 'Squelettes, Mages Sombres, Liche',
+      zone: MapType.Dungeon,
     },
     {
       id: MapType.Mountain,
@@ -46,8 +49,9 @@ export class MapSelector {
       icon: '⛰️',
       difficulty: MapDifficulty.Difficile,
       difficultyColor: '#e74c3c',
-      minLevel: 5,
+      minLevel: 10,
       enemies: 'Harpies, Golems, Dragon',
+      zone: MapType.Mountain,
     },
   ];
 }

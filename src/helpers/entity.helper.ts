@@ -42,19 +42,19 @@ export class EntityHelper {
     return randNum.map((n) => EntityHelper.KindMap[n] ?? KindEnemy.Normal);
   }
 
-  public static getRaceByNumbers(randNum: number[], zone: MapType): EnemyRaceType[] {
+  public static getRaceByNumbersAndZone(randNum: number[], zone: MapType): EnemyRaceType[] {
     switch (zone) {
       case MapType.Forest:
-        return randNum.map((n) => EntityHelper.RaceMapForest[n] ?? EnemyRaceType.Gobelin);
+        return randNum.map((n) => EntityHelper.RaceMapForest[n]);
         break;
       case MapType.Dungeon:
-        return randNum.map((n) => EntityHelper.RaceMapDungeon[n] ?? EnemyRaceType.Gobelin);
+        return randNum.map((n) => EntityHelper.RaceMapDungeon[n]);
         break;
       case MapType.Mountain:
-        return randNum.map((n) => EntityHelper.RaceMapMountain[n] ?? EnemyRaceType.Gobelin);
+        return randNum.map((n) => EntityHelper.RaceMapMountain[n]);
         break;
       default:
-        return randNum.map((n) => EntityHelper.RaceMapForest[n] ?? EnemyRaceType.Gobelin);
+        return [];
         break;
     }
   }
@@ -65,7 +65,7 @@ export class EntityHelper {
     return {
       ...template,
       characteristics: {
-        ...template.characteristics,
+        speed: template.characteristics.speed * ratio,
         hp: template.characteristics.hp * ratio,
         mana: template.characteristics.mana * ratio,
         def: template.characteristics.def * ratio,
@@ -75,6 +75,8 @@ export class EntityHelper {
       currentMp: template.characteristics.mana * ratio,
       lvl: 1,
       kind: kind,
+      xpReward: template.xpReward * ratio,
+      goldReward: template.goldReward * ratio,
     };
   }
 }

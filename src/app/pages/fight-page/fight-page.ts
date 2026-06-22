@@ -7,6 +7,8 @@ import { FightActions } from '../../components/fight-actions/fight-actions';
 import { GameState } from '../../enums/game-state.enum';
 import { LogEntry } from '../../models/log-entry.interface';
 import { LogEntryService } from '../../services/log-entry.service';
+import { ActivatedRoute } from '@angular/router';
+import { MapType } from '../../enums/map-type.enum';
 
 @Component({
   selector: 'app-fight-page',
@@ -18,8 +20,11 @@ export class FightPage {
   public readonly gameManagerService = inject(GameManagerService);
   public readonly GameState = GameState;
   public readonly logEntryService = inject(LogEntryService);
+  public readonly activatedRoute = inject(ActivatedRoute);
 
   constructor() {
-    this.gameManagerService.startFight();
+    const zone: MapType = this.activatedRoute.snapshot.params['zone'];
+    console.log('Zone selected:', zone);
+    this.gameManagerService.startFight(zone);
   }
 }

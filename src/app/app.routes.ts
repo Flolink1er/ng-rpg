@@ -9,12 +9,15 @@ import { userNotDisconnectedGuard } from './guards/user-not-disconnected-guard';
 import { FightPage } from './pages/fight-page/fight-page';
 
 export const routes: Routes = [
-  { path: 'landing', component: LandingPage, canActivate: [userNotDisconnectedGuard]},
-  { path: 'create-character', component: CreateCharacterPage, canActivate: [userNotDisconnectedGuard] },
+  { path: 'landing', component: LandingPage, canActivate: [userNotDisconnectedGuard] },
+  {
+    path: 'create-character',
+    component: CreateCharacterPage,
+    canActivate: [userNotDisconnectedGuard],
+  },
   { path: 'map', component: MapPage, canActivate: [userSelectedGuard] },
   { path: 'city', component: CityPage, canActivate: [userSelectedGuard] },
   { path: 'inventory', component: InventoryPage, canActivate: [userSelectedGuard] },
-  { path: 'fight', component: FightPage, canActivate: [userSelectedGuard] },
+  { path: 'fight/:zone', component: FightPage, canActivate: [userSelectedGuard] },
   { path: '**', redirectTo: 'landing' },
 ];
-

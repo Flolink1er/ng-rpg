@@ -2,10 +2,11 @@ import { Component, computed, input } from '@angular/core';
 import { Player } from '../../models/player';
 import { ICharacteristics } from '../../models/character.interface';
 import { IPlayer } from '../../models/player.interface';
+import { InterfaceDigitsPipe } from '../../pipes/interface-digits-pipe';
 
 @Component({
   selector: 'app-player-inventory-summary',
-  imports: [],
+  imports: [InterfaceDigitsPipe],
   templateUrl: './player-inventory-summary.html',
   styleUrl: './player-inventory-summary.scss',
 })

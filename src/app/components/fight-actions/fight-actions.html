@@ -3,7 +3,7 @@
     <button class="attack" [disabled]="disabled()" (click)="playerAtk.emit()">
       ⚔️ Attaquer
     </button>
-    <button class="flee" [disabled]="disabled()">
+    <button class="flee" [disabled]="disabled()" (click)="playerQuit.emit()">
       🏃‍➡️ Fuir
     </button>
   </div>

@@ -13,7 +13,7 @@
 
   <app-fight-history class="history-card" [logs]="logEntryService.logEntries" />
   <app-fight-actions [disabled]="gameManagerService.state() !== GameState.PLAYER_TURN"
-    (playerAtk)="gameManagerService.fightLoop()" />
+    (playerAtk)="gameManagerService.fightLoop()" (playerQuit)="gameManagerService.returnToMap(false)" />
 
 </div>
 }

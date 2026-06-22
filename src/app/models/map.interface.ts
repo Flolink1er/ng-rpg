@@ -1,4 +1,5 @@
-import { MapType } from "../enums/map-type.enum";
+import { MapType } from '../enums/map-type.enum';
+import { ZoneMap } from '../enums/zone.enum';
 
 export interface ZoneInfo {
   id: MapType;
@@ -9,4 +10,5 @@ export interface ZoneInfo {
   difficultyColor: string;
   minLevel: number;
   enemies: string;
+  zone: MapType;
 }

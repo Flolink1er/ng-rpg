@@ -101,7 +101,7 @@ progress {
 }
 
 .exp-jauge::-webkit-progress-value {
-  background: linear-gradient(270deg,
+  background: linear-gradient(90deg,
       var(--arcane-cyan),
       var(--arcane-purple),
       var(--arcane-green));
@@ -111,10 +111,10 @@ progress {
 
 @keyframes flow {
   from {
-    background-position: 0% 0;
+    background-position: 200% 0;
   }
 
   to {
-    background-position: 200% 0;
+    background-position: 0% 0;
   }
 }

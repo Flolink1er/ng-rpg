@@ -1,11 +1,11 @@
 export enum MapType {
-  Forest = "FOREST",
-  Dungeon = "DUNGEON",
-  Mountain = "MOUNTAIN"
+  Forest = 'forest',
+  Dungeon = 'dungeon',
+  Mountain = 'mountain',
 }
 
 export enum MapDifficulty {
   Facile = 'FACILE',
   Moyen = 'MOYEN',
-  Difficile = "DIFFICILE"
+  Difficile = 'DIFFICILE',
 }

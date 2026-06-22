@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { GameHeader } from "../../components/game-header/game-header";
-import { PlayerSummary } from "../../components/player-summary/player-summary";
+import { GameHeader } from '../../components/game-header/game-header';
+import { PlayerSummary } from '../../components/player-summary/player-summary';
 import { player1 } from '../../data/player.mock';
 import { MapSelector } from '../../components/map-selector/map-selector';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,9 +18,7 @@ export class MapPage {
   public readonly gameManagerService = inject(GameManagerService);
   public readonly router = inject(Router);
 
-
-  public redirectToFight(map: ZoneInfo){
-    this.router.navigateByUrl('/fight');
-
+  public redirectToFight(map: ZoneInfo) {
+    this.router.navigateByUrl('/fight/' + map.zone);
   }
 }

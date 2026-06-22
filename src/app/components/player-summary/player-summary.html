@@ -7,38 +7,43 @@
         <h4>{{player().type}} - Niveau {{player().lvl}}</h4>
       </div>
     </div>
-    <p class="gold-end">💰 {{player().money}}</p>
+    <p class="gold-end">💰 {{player().money | interfaceDigits}}</p>
   </div>
 
   <div class="jauge">
     <div class="jauge-item">
       <div class="header-jauge">
         <p>PV</p>
-        <p>{{player().currentHp}}/{{player().characteristics.hp}}</p>
+        <p>{{player().currentHp | interfaceDigits}}/{{player().characteristics.hp | interfaceDigits}}</p>
       </div>
       <div>
-        <progress class="pv-jauge" [ngClass]="{'danger' : player().currentHp < player().characteristics.hp}"
-          max="{{player().characteristics.hp}}" value="{{player().characteristics.hp}}"></progress>
+        <progress class="pv-jauge" [ngClass]="{'danger' : player().currentHp < player().characteristics.hp/2}"
+          max="{{player().characteristics.hp | interfaceDigits}}"
+          value="{{player().currentHp | interfaceDigits}}"></progress>
       </div>
     </div>
 
     <div class="jauge-item">
       <div class="header-jauge">
         <p>PM</p>
-        <p>30/30</p>
+        <p>{{player().currentMp | interfaceDigits}}/{{player().characteristics.mana | interfaceDigits}}</p>
       </div>
       <div>
-        <progress class="pm-jauge" max="30" value="30"></progress>
+        <progress class="pm-jauge" max="{{player().characteristics.mana | interfaceDigits}}"
+          value="{{player().currentMp | interfaceDigits}}"></progress>
       </div>
     </div>
 
     <div class="jauge-item">
       <div class="header-jauge">
         <p>EXP</p>
-        <p>{{player().currentXp}}/{{player().lvl * 100}}</p>
+        <p>
+          {{player().currentXp |interfaceDigits}}/{{player().lvl | xpRemaining | interfaceDigits}}
+        </p>
       </div>
       <div>
-        <progress class="exp-jauge" max="100" value="{{player().currentXp}}"></progress>
+        <progress class="exp-jauge" max="{{player().lvl | xpRemaining | interfaceDigits}}"
+          value="{{player().currentXp | interfaceDigits}}"></progress>
       </div>
     </div>
   </div>

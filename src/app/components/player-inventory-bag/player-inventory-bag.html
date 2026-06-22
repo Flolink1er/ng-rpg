@@ -1,14 +1,27 @@
 <div class="inventory-bag">
   <div class="inventory-filters">
     <div class="filter active">Tout</div>
-    <div class="filter">Potions</div>
-    <div class="filter">Armes</div>
-    <div class="filter">Armures</div>
-    <div class="filter">Accessoires</div>
+    @for (type of ItemTypeList; track type) {
+    <div class="filter"><span>{{IconByItemType[type]}}</span><span>{{type}}</span></div>
+    }
   </div>
 
   <div class="inventory-content">
-    <div class="inventory-item">
+    @for (item of ITEMS; track item.name){
+    <div class="inventory-item {{`item-${item.rarity}`}}">
+      <div class="item-icon">{{IconByItemType[item.type]}}</div>
+      <div class="item-info">
+        <div class="item-name">{{item.name}}</div>
+        <div class="item-desc">{{item.description}}</div>
+        <div class="item-info-sub">
+          <div class="item-rarity {{item.rarity}}">{{item.rarity}}</div>
+          <div class="item-quantity">x{{item.amount}}</div>
+        </div>
+      </div>
+      <div class="item-useBtn">{{item.type === ItemType.POTION ? 'Utiliser' : 'Équiper'}}</div>
+    </div>
+    }
+    <!-- <div class="inventory-item">
       <div class="item-icon">🧪</div>
       <div class="item-info">
         <div class="item-name">Petite Potion de soin</div>
@@ -45,6 +58,6 @@
         </div>
       </div>
       <div class="item-equipBtn equiped">Équipé</div>
-    </div>
+    </div> -->
   </div>
 </div>

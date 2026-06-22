@@ -10,6 +10,7 @@ import { EntityHelper } from '../../helpers/entity.helper';
 import { MapType } from '../enums/map-type.enum';
 import { LogEntryService } from './log-entry.service';
 import { InterfaceDigitsPipe } from '../pipes/interface-digits-pipe';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class GameManagerService {
@@ -17,10 +18,11 @@ export class GameManagerService {
   private _gameState: WritableSignal<GameState> = signal(GameState.NONE);
   private _enemiesTemplate: IEnemy[] = ENEMY_DATA;
   private _enemies: IEnemyInstance[] = [];
-  private _currentEnemy?: IEnemyInstance;
+  private _currentEnemy: WritableSignal<IEnemyInstance | undefined> = signal(undefined);
   private readonly randomService = inject(Random);
   private readonly logEntryService = inject(LogEntryService);
   private readonly digitPipe = inject(InterfaceDigitsPipe);
+  private readonly router = inject(Router);
 
   public initGame(player: IPlayer): void {
     this._currentPlayer = player;
@@ -39,55 +41,56 @@ export class GameManagerService {
   }
 
   public get currentEnemy(): IEnemyInstance {
-    return this._currentEnemy!;
+    return this._currentEnemy()!;
   }
 
   public get state(): WritableSignal<GameState> {
     return this._gameState!;
   }
 
-  private getRandomEnemiesType(): Observable<EnemyRaceType[]> {
+  private getRandomEnemiesType(zone: MapType): Observable<EnemyRaceType[]> {
     return this.randomService
-      .generateIntegerAndGetData(5, 0, this._enemiesTemplate.length - 1)
-      .pipe(map((values) => EntityHelper.getRaceByNumbers(values, MapType.Forest)));
+      .generateIntegerAndGetData(5, 0, 2)
+      .pipe(map((values) => EntityHelper.getRaceByNumbersAndZone(values, zone)));
   }
 
   private getRandomEnemiesKind(): Observable<KindEnemy[]> {
     return this.randomService
-      .generateIntegerAndGetData(5, 0, this._enemiesTemplate.length - 1)
+      .generateIntegerAndGetData(5, 0, 2)
       .pipe(map((values) => EntityHelper.getKindByNumbers(values)));
   }
 
-  public startFight(): void {
+  public startFight(zone: MapType): void {
     this.logEntryService.addLog('system', '⚔️', 'Combat démarré !');
-    let race$ = this.getRandomEnemiesType();
+    let race$ = this.getRandomEnemiesType(zone);
     let kind$ = this.getRandomEnemiesKind();
     zip(race$, kind$)
       .pipe(map(([race, kind]) => ({ race, kind })))
       .subscribe((values) => {
-        values.race.map((race, index) => {
-          let newEnemy = EntityHelper.enemyRaceToInstance(
-            race,
-            values.kind[index],
-          ) as IEnemyInstance;
-          this._enemies!.push(newEnemy);
+        this._enemies = values.race.map((race, i) => {
+          const kind = i >= 3 ? values.kind[i] : KindEnemy.Normal;
+          return EntityHelper.enemyRaceToInstance(race, kind);
         });
 
         this._gameState?.set(GameState.FIGHT_INIT as GameState);
-        this._gameState.set(this.handleInitFight());
-        this._gameState.set(this.handleTurnDecide());
-        if (this._gameState() === GameState.ENEMY_TURN) {
-          this.fightLoop();
-        }
+        this.startNewFight();
       });
   }
 
+  private startNewFight(): void {
+    this._gameState.set(this.handleInitFight());
+    this._gameState.set(this.handleTurnDecide());
+    if (this._gameState() === GameState.ENEMY_TURN) {
+      this.fightLoop();
+    }
+  }
+
   private handleInitFight(): GameState {
-    this._currentEnemy = this._enemies.shift();
+    this._currentEnemy.set(this._enemies.shift());
     this.logEntryService.addLog(
       'info',
       'ℹ️',
-      `Un ${this._currentEnemy!.name} de niveau ${this._currentEnemy?.lvl} est apparu prêt à en découdre !`,
+      `Un ${this.currentEnemy!.name} de niveau ${this.currentEnemy!.lvl} est apparu prêt à en découdre !`,
     );
     return GameState.TURN_DECIDE;
   }
@@ -100,8 +103,9 @@ export class GameManagerService {
         this.logEntryService.addLog(
           'system',
           '📜',
-          `${this.currentEnemy!.currentHp <= 0 ? this.currentPlayer.pseudo : this._currentEnemy?.name} a remporté le combat !`,
+          `${this.currentEnemy!.currentHp <= 0 ? this.currentPlayer.pseudo : this.currentEnemy!.name} a remporté le combat !`,
         );
+        this.returnToMap(true);
       } else {
         this._gameState.set(GameState.PLAYER_TURN);
         this.logEntryService.addLog(
@@ -117,8 +121,16 @@ export class GameManagerService {
         this.logEntryService.addLog(
           'system',
           '📜',
-          `${this.currentEnemy!.currentHp <= 0 ? this.currentPlayer.pseudo : this._currentEnemy?.name} a remporté le combat !`,
+          `${this.currentEnemy!.currentHp <= 0 ? this.currentPlayer.pseudo : this.currentEnemy!.name} a remporté le combat !`,
         );
+        this.handleReward(this.currentEnemy.goldReward, this.currentEnemy.xpReward);
+
+        if (this._enemies.length >= 1) {
+          this.startNewFight();
+        } else {
+          this._gameState.set(GameState.NONE);
+          this.returnToMap(false);
+        }
       } else {
         setTimeout(() => {
           this._gameState.set(GameState.ENEMY_TURN);
@@ -151,12 +163,41 @@ export class GameManagerService {
   private applyPlayerAttack(): void {
     this._gameState.set(GameState.APPLY_EFFECT);
     const atk = this.checkPlayerDamage();
-    this._currentEnemy!.currentHp -= atk;
+    this.currentEnemy!.currentHp -= atk;
     this.logEntryService.addLog(
       'player',
       '⚔️',
       `${this._currentPlayer?.pseudo} a infligé ${this.digitPipe.transform(atk)} de dégâts`,
     );
+  }
+
+  private handleReward(gold: number, xp: number): void {
+    this.currentPlayer.money += gold;
+    this.currentPlayer.currentXp += xp;
+    this.logEntryService.addLog(
+      'system',
+      '🪙',
+      `Félicitation, Vous avez reçu un montant de ${gold} or et de ${xp} XP !`,
+    );
+
+    let currentLvl = this.currentPlayer.lvl;
+    if (this.currentPlayer.currentXp >= this.xpForNextLevel(currentLvl)) {
+      console.log(this._currentPlayer?.currentXp, 'Niveau passé !');
+      this.currentPlayer.lvl += 1;
+
+      this.currentPlayer.characteristics.atk *= 1.1;
+      this.currentPlayer.characteristics.def *= 1.1;
+      this.currentPlayer.characteristics.speed *= 1.1;
+      this.currentPlayer.characteristics.hp *= 1.1;
+      this.currentPlayer.characteristics.mana *= 1.1;
+
+      this.currentPlayer.currentHp = this.currentPlayer.characteristics.hp;
+      this.currentPlayer.currentMp = this.currentPlayer.characteristics.mana;
+    }
+  }
+
+  public xpForNextLevel(level: number) {
+    return 500 * Math.pow(2.5, level - 1);
   }
 
   private checkEnemyDamage(): number {
@@ -172,13 +213,13 @@ export class GameManagerService {
 
   private handleTurnDecide(): GameState {
     const turn =
-      this._currentPlayer!.characteristics.speed >= this._currentEnemy!.characteristics.speed
+      this._currentPlayer!.characteristics.speed >= this.currentEnemy!.characteristics.speed
         ? GameState.PLAYER_TURN
         : GameState.ENEMY_TURN;
     this.logEntryService.addLog(
       'system',
       '📜',
-      `${turn == GameState.PLAYER_TURN ? this._currentPlayer?.pseudo : this._currentEnemy?.name} commence !`,
+      `${turn == GameState.PLAYER_TURN ? this._currentPlayer?.pseudo : this.currentEnemy!.name} commence !`,
     );
     return turn;
   }
@@ -197,5 +238,18 @@ export class GameManagerService {
 
   private handleCheckEnd(): GameState {
     return GameState.FIGHT_END;
+  }
+
+  public returnToMap(restoreLife: boolean): void {
+    if (restoreLife) {
+      this.currentPlayer.currentHp = this.currentPlayer.characteristics.hp;
+      this.currentPlayer.currentMp = this.currentPlayer.characteristics.mana;
+      this.currentPlayer.money *= 0.5;
+    }
+
+    console.log('Enemies :', this._enemies);
+
+    this.logEntryService.reset();
+    this.router.navigateByUrl('/map');
   }
 }

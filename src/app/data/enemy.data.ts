@@ -1,5 +1,6 @@
-import { EnemyRaceType } from "../enums/enemy-race-type.enum";
-import { IEnemy, IEnemyInstance } from "../models/enemy.interface";
+import { EnemyRaceType } from '../enums/enemy-race-type.enum';
+import { MapType } from '../enums/map-type.enum';
+import { IEnemy, IEnemyInstance } from '../models/enemy.interface';
 
 export const ENEMY_DATA: IEnemy[] = [
   {
@@ -13,6 +14,9 @@ export const ENEMY_DATA: IEnemy[] = [
       mana: 0,
     },
     race: EnemyRaceType.Gobelin,
+    xpReward: 100,
+    goldReward: 10,
+    zone: MapType.Forest,
   },
   {
     name: 'Troll',
@@ -25,6 +29,9 @@ export const ENEMY_DATA: IEnemy[] = [
       mana: 0,
     },
     race: EnemyRaceType.Troll,
+    xpReward: 250,
+    goldReward: 50,
+    zone: MapType.Forest,
   },
   {
     name: 'Loup',
@@ -37,8 +44,9 @@ export const ENEMY_DATA: IEnemy[] = [
       mana: 0,
     },
     race: EnemyRaceType.Loup,
-  }
-  /*
+    xpReward: 125,
+    goldReward: 25,
+    zone: MapType.Forest,
   },
   {
     name: 'Squelette',
@@ -51,10 +59,9 @@ export const ENEMY_DATA: IEnemy[] = [
       mana: 0,
     },
     race: EnemyRaceType.Squelette,
-    lvl: 1,
-    currentHp: 60,
-    currentMp: 0,
-    kind: 'normal'
+    xpReward: 150,
+    goldReward: 60,
+    zone: MapType.Dungeon,
   },
   {
     name: 'Mage Sombre',
@@ -67,10 +74,9 @@ export const ENEMY_DATA: IEnemy[] = [
       mana: 100,
     },
     race: EnemyRaceType.MageSombre,
-    lvl: 1,
-    currentHp: 50,
-    currentMp: 100,
-    kind: 'normal'
+    xpReward: 300,
+    goldReward: 100,
+    zone: MapType.Dungeon,
   },
   {
     name: 'Liche',
@@ -83,14 +89,14 @@ export const ENEMY_DATA: IEnemy[] = [
       mana: 150,
     },
     race: EnemyRaceType.Liche,
-    lvl: 1,
-    currentHp: 100,
-    currentMp: 150,
-    kind: 'normal'
+    xpReward: 325,
+    goldReward: 125,
+    zone: MapType.Dungeon,
   },
   {
     name: 'Harpie',
-    description: 'Créature volante rapide et agressive. Personnification de la tempête et du chaos.',
+    description:
+      'Créature volante rapide et agressive. Personnification de la tempête et du chaos.',
     characteristics: {
       atk: 12,
       def: 8,
@@ -99,10 +105,9 @@ export const ENEMY_DATA: IEnemy[] = [
       mana: 0,
     },
     race: EnemyRaceType.Harpie,
-    lvl: 1,
-    currentHp: 50,
-    currentMp: 0,
-    kind: 'normal'
+    xpReward: 200,
+    goldReward: 100,
+    zone: MapType.Mountain,
   },
   {
     name: 'Golem',
@@ -115,10 +120,9 @@ export const ENEMY_DATA: IEnemy[] = [
       mana: 0,
     },
     race: EnemyRaceType.Golem,
-    lvl: 1,
-    currentHp: 100,
-    currentMp: 0,
-    kind: 'normal'
+    xpReward: 450,
+    goldReward: 150,
+    zone: MapType.Mountain,
   },
   {
     name: 'Dragon',
@@ -131,9 +135,8 @@ export const ENEMY_DATA: IEnemy[] = [
       mana: 200,
     },
     race: EnemyRaceType.Dragon,
-    lvl: 1,
-    currentHp: 200,
-    currentMp: 200,
-    kind: 'normal'
-  }*/
-]
+    xpReward: 500,
+    goldReward: 500,
+    zone: MapType.Mountain,
+  },
+];

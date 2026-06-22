@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { IPlayer } from "../models/player.interface";
+import { Injectable } from '@angular/core';
+import { IPlayer } from '../models/player.interface';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class PlayerService {
   private readonly PLAYER_KEY = 'PLAYER_KEY';
 
@@ -37,10 +37,22 @@ export class PlayerService {
     return this.retrievePlayers().find((p) => p.pseudo === pseudo);
   }
 
-  public get hasPlayerCreated():boolean{
+  public get hasPlayerCreated(): boolean {
     return this.retrievePlayers().length > 0;
   }
 
-  public save() {}
+  public save(currentPlayer: IPlayer): void {
+    const players = this.retrievePlayers().filter((p) => p.pseudo !== currentPlayer.pseudo);
+
+    players.unshift(currentPlayer);
+
+    try {
+      const toSave = JSON.stringify(players);
+      localStorage.setItem(this.PLAYER_KEY, toSave);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   public delete() {}
 }
