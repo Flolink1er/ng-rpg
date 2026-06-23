@@ -10,6 +10,7 @@ export enum ItemRarity {
   RARE = 'Rare',
   EPIC = 'Epic',
   LEGENDARY = 'Legendary',
+  MYTHIC = 'Mythic',
 }
 
 export const IconByItemType: Record<ItemType, string> = {

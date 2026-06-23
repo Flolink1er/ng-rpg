@@ -2,6 +2,7 @@
   width: 75%;
   border-radius: 10px;
   background: var(--bg-tertiary);
+  max-height: 550px;
 }
 
 .inventory-bag {
@@ -44,10 +45,17 @@
   }
 
   .inventory-content {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     gap: 20px;
+    max-height: 460px;
+    overflow-y: auto;
+
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--arcane-cyan) var(--bg-accent) !important;
+
 
     .inventory-item {
       display: flex;
@@ -67,79 +75,97 @@
         border-color: var(--bg-rare);
       }
 
+      &.item-Epic {
+        border-color: var(--bg-epic);
+      }
+
       &.item-Legendary {
         border-color: var(--bg-legendary);
       }
 
-      .item-icon {
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.7rem;
+      &.item-Mythic {
+        border-color: var(--bg-mythic);
+      }
+    }
+
+    .item-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+    }
+
+    .item-info {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .item-name {
+      font-weight: bold;
+      color: var(--arcane-cyan);
+      font-size: 1.2rem;
+    }
+
+    .item-useBtn,
+    .item-equipBtn {
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: var(--arcane-green);
+      color: var(--bg-main);
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: auto;
+      margin-right: 20px;
+
+      &.equiped {
+        background-color: var(--arcane-cyan);
+      }
+    }
+
+    .item-rarity {
+      font-size: 0.9rem;
+      border-radius: 15px;
+      padding: 2px 8px;
+
+      &.Common {
+        background: var(--bg-common);
+        color: var(--text-common);
       }
 
-      .item-info {
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
+      &.Rare {
+        background: var(--bg-rare);
+        color: var(--text-rare);
       }
 
-      .item-name {
-        font-weight: bold;
-        color: var(--arcane-cyan);
-        font-size: 1.2rem;
+      &.Epic {
+        background: var(--bg-epic);
+        color: var(--text-epic);
       }
 
-      .item-useBtn,
-      .item-equipBtn {
-        padding: 10px 15px;
-        border-radius: 8px;
-        background: var(--arcane-green);
-        color: var(--bg-main);
-        font-weight: bold;
-        cursor: pointer;
-        margin-left: auto;
-        margin-right: 20px;
-
-        &.equiped {
-          background-color: var(--arcane-cyan);
-        }
+      &.Legendary {
+        background: var(--bg-legendary);
+        color: var(--text-legendary);
       }
 
-      .item-rarity {
-        font-size: 0.9rem;
-        border-radius: 15px;
-        padding: 2px 8px;
-
-        &.Common {
-          background: var(--bg-common);
-          color: var(--text-common);
-        }
-
-        &.Rare {
-          background: var(--bg-rare);
-          color: var(--text-rare);
-        }
-
-        &.Legendary {
-          background: var(--bg-legendary);
-          color: var(--text-legendary);
-        }
+      &.Mythic {
+        background: var(--bg-mythic);
+        color: var(--text-mythic);
       }
+    }
 
-      .item-quantity {
-        font-size: 1.2rem;
-        color: var(--arcane-green);
-      }
+    .item-quantity {
+      font-size: 1.2rem;
+      color: var(--arcane-green);
+    }
 
-      .item-info-sub {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 10px;
-      }
+    .item-info-sub {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 10px;
     }
   }
 }
