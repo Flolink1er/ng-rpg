@@ -97,7 +97,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  margin-bottom: 10%;
+  // margin-bottom: 10%;
   font-family: 'Inter', sans-serif;
   transition: all 1.5s ease-in-out;
   scrollbar-width: none;
@@ -440,4 +440,391 @@ div.pill-container {
   width: 75vw;
   transform: translateX(-50%);
   margin-top: 1%;
+}
+
+:host {
+  width: 75%;
+  border-radius: 10px;
+  background: var(--bg-tertiary);
+  max-height: 550px;
+}
+
+.inventory-bag {
+  min-width: 1150px;
+}
+
+.shop-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--bg-accent);
+  padding: 10px 40px;
+  border-radius: 10px;
+  max-width: 55%;
+  height: 100%;
+}
+
+.inventory-bag,
+.shop-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+
+
+  .inventory-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+
+    .filter {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      border-radius: 15px;
+      background: var(--bg-accent);
+      color: var(--arcane-cyan);
+      font-weight: bold;
+      cursor: pointer;
+      gap: 5px;
+
+      &.active {
+        background: var(--arcane-cyan);
+        color: var(--bg-main);
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+      }
+
+      &:hover:not(.active) {
+        color: var(--arcane-cyan);
+        background-color: var(--bg-secondary);
+        box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+      }
+    }
+  }
+
+  .inventory-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+    max-height: 460px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--arcane-cyan) var(--bg-tertiary) !important;
+
+    &.shop-inventory {
+      max-height: 650px;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    .inventory-item {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      padding: 18px 22px;
+
+      &.rich::before {
+
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background: linear-gradient(120deg,
+            transparent 20%,
+            rgba(255, 255, 255, .05),
+            transparent 80%);
+
+        transform: translateX(-130%);
+        transition: transform .6s;
+      }
+
+      &.rich:hover::before {
+
+        transform: translateX(130%);
+      }
+
+      &.rich {
+        border-radius: 16px;
+        background: linear-gradient(135deg,
+            rgba(17, 24, 39, .95),
+            rgba(31, 41, 55, .8));
+
+        border: 1px solid rgba(255, 255, 255, .05);
+
+        transition:
+          transform .2s ease,
+          box-shadow .2s ease,
+          border-color .2s ease;
+
+        &:hover {
+          transform: translateY(-3px);
+
+          border-color: rgba(0, 229, 255, .35);
+
+          box-shadow:
+            0 0 18px rgba(0, 229, 255, .12),
+            0 8px 30px rgba(0, 0, 0, .35);
+        }
+      }
+
+      &.poor {
+        background: var(--bg-main);
+        filter: brightness(.5), opacity(.2);
+      }
+
+
+
+      &.item-Common {
+        border-color: var(--bg-common);
+      }
+
+      &.item-Rare {
+        border-color: var(--bg-rare);
+
+        &:hover {
+          box-shadow:
+            0 0 18px rgba(58, 237, 127, .20);
+        }
+      }
+
+      &.item-Epic {
+        border-color: var(--bg-epic);
+
+        &:hover {
+          box-shadow:
+            0 0 18px rgba(124, 58, 237, .25);
+        }
+      }
+
+      &.item-Legendary {
+        border-color: var(--bg-legendary);
+
+        &:hover {
+          box-shadow:
+            0 0 20px rgba(245, 158, 11, .25),
+            0 0 50px rgba(245, 158, 11, .12);
+        }
+      }
+
+      &.item-Mythic {
+        border-color: var(--bg-mythic);
+
+        &:hover {
+          box-shadow:
+            0 0 20px rgba(245, 11, 11, 0.25),
+            0 0 50px rgba(245, 11, 11, 0.12),
+            0 0 80px rgba(245, 11, 11, 0.04);
+        }
+      }
+    }
+  }
+
+  .item-icon {
+    width: 72px;
+    height: 72px;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, .03);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+
+    flex-shrink: 0;
+  }
+
+  .item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .item-name {
+    font-family: "Cinzel";
+    font-size: 1.4rem;
+    letter-spacing: .5px;
+
+    color: var(--arcane-cyan);
+  }
+
+  .item-desc {
+    color: #94A3B8;
+    line-height: 1.5;
+    font-size: .95rem;
+  }
+
+  .buy-separator {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, .08);
+  }
+
+  .item-buyBtn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    min-width: 170px;
+
+    padding: 15px;
+    margin-left: auto;
+    margin-right: 20px;
+
+    border-radius: 14px;
+
+    &.richEngough {
+      background: linear-gradient(135deg,
+          rgba(234, 179, 8, .18),
+          rgba(234, 178, 8, 0.05));
+
+      border: 1px solid rgba(234, 179, 8, .35);
+
+      transition: .2s;
+
+      &:hover {
+
+        transform: translateY(-2px);
+
+        box-shadow:
+          0 0 18px rgba(234, 179, 8, .2);
+
+        border-color: var(--gold-text);
+      }
+    }
+
+    .label-buy {
+      font-weight: bold;
+      background: var(--bg-main) !important;
+      border: 1px solid var(--bg-accent);
+      color: var(--gold-text);
+      padding: 15px 20px;
+      border-radius: 10px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &.tooPoor {
+      background: linear-gradient(135deg,
+          rgba(2, 68, 68, 0.18),
+          rgba(5, 69, 104, 0.05));
+
+      &:hover {
+        animation: tilt-shaking 0.2s infinite;
+        cursor: not-allowed !important;
+
+      }
+    }
+
+
+
+  }
+
+  .item-useBtn,
+  .item-equipBtn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: var(--arcane-green);
+    color: var(--bg-main);
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 20px;
+
+    &.equiped {
+      background-color: var(--arcane-cyan);
+    }
+
+  }
+
+  .item-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item-price-icon {
+    font-size: 1.2rem;
+    color: var(--gold-text);
+    text-align: baseline;
+  }
+
+  .item-rarity {
+    font-size: 0.9rem;
+    border-radius: 15px;
+    padding: 2px 8px;
+
+    &.Common {
+      background: var(--bg-common);
+      color: var(--text-common);
+    }
+
+    &.Rare {
+      background: var(--bg-rare);
+      color: var(--text-rare);
+    }
+
+    &.Epic {
+      background: var(--bg-epic);
+      color: var(--text-epic);
+    }
+
+    &.Legendary {
+      background: var(--bg-legendary);
+      color: var(--text-legendary);
+    }
+
+    &.Mythic {
+      background: var(--bg-mythic);
+      color: var(--text-mythic);
+    }
+  }
+
+  .item-quantity {
+    font-size: 1.2rem;
+    color: var(--arcane-green);
+  }
+
+  .item-info-sub {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}
+
+@keyframes tilt-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(5deg);
+  }
+
+  50% {
+    transform: rotate(0eg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }

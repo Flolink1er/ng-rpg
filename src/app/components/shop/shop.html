@@ -1,0 +1,33 @@
+<div class="shop-container">
+  <h1 class="title-contrast">Boutique</h1>
+  <div class="inventory-content shop-inventory">
+    @for (item of items; track item.name){
+    <div class="inventory-item {{`item-${item.rarity}`}}" [ngClass]="player().money >= item.cost ? 'rich' : 'poor' ">
+      <div class="item-icon">{{IconByItemType[item.type]}}</div>
+      <div class="item-info">
+        <div class="item-name">{{item.name}}</div>
+        <div class="item-desc">
+          @for (line of item.description | tabulateDescriptionPipe; track line) {
+          <div>{{line}}</div>
+          }
+        </div>
+        <div class="item-info-sub">
+          <div class="item-rarity {{item.rarity}}">{{item.rarity}}</div>
+        </div>
+      </div>
+      <div class="item-buyBtn" [ngClass]="player().money >= item.cost ? 'richEnough' : 'tooPoor' ">
+        <div class="item-price">
+          <span class="item-price-icon">💰</span>
+          <span>{{ item.cost }}</span>
+        </div>
+
+        <div class="buy-separator"></div>
+
+        <span class="label-buy" [ngClass]="player().money >= item.cost ? 'richEnough' : 'tooPoor' "
+          (click)="buyItem(item)">
+          Acheter
+        </span>
+      </div>
+    </div>
+    }
+  </div>

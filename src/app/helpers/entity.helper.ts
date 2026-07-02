@@ -1,7 +1,7 @@
-import { ENEMY_DATA } from '../app/data/enemy.data';
-import { EnemyRaceType, KindEnemy } from '../app/enums/enemy-race-type.enum';
-import { MapType } from '../app/enums/map-type.enum';
-import { IEnemy, IEnemyInstance } from '../app/models/enemy.interface';
+import { ENEMY_DATA } from '../data/enemy.data';
+import { KindEnemy, EnemyRaceType } from '../enums/enemy-race-type.enum';
+import { MapType } from '../enums/map-type.enum';
+import { IEnemy, IEnemyInstance } from '../models/enemy.interface';
 
 export class EntityHelper {
   private static _enemiesTemplate: IEnemy[] = ENEMY_DATA;

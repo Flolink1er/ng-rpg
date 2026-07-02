@@ -3,7 +3,7 @@ import { USER_CHOICES_CLASS } from '../../data/class.data';
 import { ClassType } from '../../enums/class-type.enum';
 import { ICharacter } from '../../models/character.interface';
 import { NgClass } from '@angular/common';
-import { CharacterCard } from "../../components/character-card/character-card";
+import { CharacterCard } from '../../components/character-card/character-card';
 import { ThemeService } from '../../services/theme.service';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,41 +26,40 @@ export class CreateCharacterPage {
   public readonly gameManagerService = inject(GameManagerService);
   private themeService = inject(ThemeService);
 
-  public selectedCharacter ?: ICharacter;
+  public selectedCharacter?: ICharacter;
 
-
-
-  public onSelect(character: ICharacter){
-    if (this.selectedCharacter?.type === character.type){
+  public onSelect(character: ICharacter) {
+    if (this.selectedCharacter?.type === character.type) {
       this.selectedCharacter = undefined;
       this.themeService.setTheme('Default');
-    }else{
+    } else {
       this.selectedCharacter = character;
 
-      switch (this.selectedCharacter?.type){
-        case ClassType.Mage :
+      switch (this.selectedCharacter?.type) {
+        case ClassType.Mage:
           this.themeService.setTheme('Mage');
           break;
-        case ClassType.Rogue :
+        case ClassType.Rogue:
           this.themeService.setTheme('Rogue');
           break;
-        case ClassType.Warrior :
+        case ClassType.Warrior:
           this.themeService.setTheme('Warrior');
           break;
       }
     }
   }
 
-  public createCharacter():void{
-    if (this.nameFormControl.valid && this.selectedCharacter){
-      const player : IPlayer = {
+  public createCharacter(): void {
+    if (this.nameFormControl.valid && this.selectedCharacter) {
+      const player: IPlayer = {
         ...this.selectedCharacter,
         pseudo: this.nameFormControl.value!,
-        lvl : 1,
+        lvl: 1,
         currentHp: this.selectedCharacter.characteristics.hp,
         currentMp: this.selectedCharacter.characteristics.mana,
         currentXp: 0,
-        money: 50
+        money: 50,
+        inventory: [],
       };
 
       this.playerService.add(player);
@@ -69,10 +68,10 @@ export class CreateCharacterPage {
     }
   }
 
-  private initGameWithNewUser(playerPseudo: string){
+  private initGameWithNewUser(playerPseudo: string) {
     const player = this.playerService.getUserByPseudo(playerPseudo);
-      if(player){
-        this.gameManagerService.initGame(player);
-      }
+    if (player) {
+      this.gameManagerService.initGame(player);
+    }
   }
 }

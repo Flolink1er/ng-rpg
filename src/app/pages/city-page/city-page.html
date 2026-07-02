@@ -2,4 +2,10 @@
 @let player = gameManagerService.currentPlayer;
 
 <app-game-header [money]="player.money" [lvl]="player.lvl" [pseudo]="player.pseudo"></app-game-header>
+
+<div class="container city-page-container">
+  <app-shop [player]="player"></app-shop>
+
+  <!-- <app-hostel></app-hostel> -->
+</div>
 }

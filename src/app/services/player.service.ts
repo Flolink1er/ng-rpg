@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IPlayer } from '../models/player.interface';
+import { IInventoryItemInstance } from '../models/item.interface';
 
 @Injectable({ providedIn: 'root' })
 export class PlayerService {
@@ -52,6 +53,10 @@ export class PlayerService {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  public addItem(currentPlayer: IPlayer, item: IInventoryItemInstance): void {
+    currentPlayer.inventory.push(item);
   }
 
   public delete() {}

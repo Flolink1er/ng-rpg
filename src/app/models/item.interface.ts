@@ -1,4 +1,4 @@
-import { ItemRarity, ItemType } from '../enums/item-type.enum';
+import { EquipableSlot, ItemRarity, ItemType } from '../enums/item-type.enum';
 import { ICharacteristics } from './character.interface';
 
 export interface IInventoryItem {
@@ -7,13 +7,20 @@ export interface IInventoryItem {
   type: ItemType;
   description: string;
   rarity: ItemRarity;
-  effect?: number;
-  statTarget?: keyof ICharacteristics;
-  cost?: number;
+}
+
+export interface IInventoryItemUsable extends IInventoryItem {}
+
+export interface IInventoryItemEquipable extends IInventoryItem {
+  slot: EquipableSlot;
+  effect?: number[];
+  statTarget?: keyof ICharacteristics[];
 }
 
 export interface IInventoryItemInstance extends IInventoryItem {
   amount: number;
 }
 
-export interface IInventoryBag {}
+export interface IShopItemInstance extends IInventoryItem {
+  cost: number;
+}

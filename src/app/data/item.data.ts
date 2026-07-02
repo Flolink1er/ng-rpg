@@ -1,5 +1,5 @@
 import { IconByItemType, ItemRarity, ItemType } from '../enums/item-type.enum';
-import { IInventoryItemInstance } from '../models/item.interface';
+import { IInventoryItemInstance, IShopItemInstance } from '../models/item.interface';
 
 export const ITEMS: IInventoryItemInstance[] = [
   {
@@ -52,7 +52,7 @@ export const ITEMS: IInventoryItemInstance[] = [
     icon: IconByItemType.Potion,
   },
   {
-    name: 'Observatum Destinae',
+    name: 'Destinatum Observabile',
     type: ItemType.ACCESSOIRE,
     description: `Le destin vous apparait tel un flux de données asynchrone, vous ne subissez aucun dégâts pendant un combat.
       \n(Se recharge après 3 combats)`,
@@ -61,3 +61,16 @@ export const ITEMS: IInventoryItemInstance[] = [
     icon: IconByItemType.Potion,
   },
 ];
+
+const RARITY_VALUE: Record<ItemRarity, number> = {
+  [ItemRarity.COMMON]: 1,
+  [ItemRarity.RARE]: 2,
+  [ItemRarity.EPIC]: 5,
+  [ItemRarity.LEGENDARY]: 10,
+  [ItemRarity.MYTHIC]: 20,
+};
+
+export const SHOP_ITEMS: IShopItemInstance[] = ITEMS.map((item) => ({
+  ...item,
+  cost: RARITY_VALUE[item.rarity] * 10,
+}));

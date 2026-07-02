@@ -1,13 +1,16 @@
 <div class="inventory-bag">
   <div class="inventory-filters">
-    <div class="filter active">Tout</div>
     @for (type of ItemTypeList; track type) {
-    <div class="filter"><span>{{IconByItemType[type]}}</span><span>{{type}}</span></div>
+    <div class="filter" [ngClass]="currentFilter() == type ? 'active' : ''" (click)="filterItems(type)">
+      <span>{{IconByItemType[type]}}</span><span>{{type}}</span>
+    </div>
     }
   </div>
 
   <div class="inventory-content">
-    @for (item of ITEMS; track item.name){
+    @if (itemsToShow().length > 0){
+
+    @for (item of itemsToShow(); track item.name){
     <div class="inventory-item {{`item-${item.rarity}`}}">
       <div class="item-icon">{{IconByItemType[item.type]}}</div>
       <div class="item-info">
@@ -24,6 +27,10 @@
       </div>
       <div class="item-useBtn">{{item.type === ItemType.POTION ? 'Utiliser' : 'Équiper'}}</div>
     </div>
+    }
+    }
+    @else {
+    <i>Aucun objet dans votre inventaire</i>
     }
     <!-- <div class="inventory-item">
       <div class="item-icon">🧪</div>

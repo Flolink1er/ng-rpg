@@ -6,7 +6,7 @@ import { IEnemy, IEnemyInstance } from '../models/enemy.interface';
 import { ENEMY_DATA } from '../data/enemy.data';
 import { EnemyRaceType, KindEnemy } from '../enums/enemy-race-type.enum';
 import { from, map, Observable, zip } from 'rxjs';
-import { EntityHelper } from '../../helpers/entity.helper';
+import { EntityHelper } from '../helpers/entity.helper';
 import { MapType } from '../enums/map-type.enum';
 import { LogEntryService } from './log-entry.service';
 import { InterfaceDigitsPipe } from '../pipes/interface-digits-pipe';
@@ -21,7 +21,6 @@ export class GameManagerService {
   private _currentEnemy: WritableSignal<IEnemyInstance | undefined> = signal(undefined);
   private readonly randomService = inject(Random);
   private readonly logEntryService = inject(LogEntryService);
-  private readonly digitPipe = inject(InterfaceDigitsPipe);
   private readonly router = inject(Router);
 
   public initGame(player: IPlayer): void {
@@ -156,7 +155,7 @@ export class GameManagerService {
     this.logEntryService.addLog(
       'enemy',
       '⚔️',
-      `${this._currentPlayer?.pseudo} a perdu : ${this.digitPipe.transform(atk)} hp`,
+      `${this._currentPlayer?.pseudo} a perdu : ${this.digitPipe(atk)} hp`,
     );
   }
 
@@ -167,7 +166,7 @@ export class GameManagerService {
     this.logEntryService.addLog(
       'player',
       '⚔️',
-      `${this._currentPlayer?.pseudo} a infligé ${this.digitPipe.transform(atk)} de dégâts`,
+      `${this._currentPlayer?.pseudo} a infligé ${this.digitPipe(atk)} de dégâts`,
     );
   }
 
@@ -251,5 +250,15 @@ export class GameManagerService {
 
     this.logEntryService.reset();
     this.router.navigateByUrl('/map');
+  }
+
+  private digitPipe(value: number, digits = 0): number {
+    if (value > 0 && value < 1) {
+      return 1;
+    } else if (value < 0) {
+      return 0;
+    } else {
+      return +value.toFixed(digits);
+    }
   }
 }
